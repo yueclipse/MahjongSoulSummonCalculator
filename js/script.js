@@ -89,7 +89,7 @@ function calculateEventSuccessProbability() {
     if(config.pools.event.maxCharacters > 1) { 
         let output = '';
         let sum = 0;
-        for(let i = s; i < config.pools.event.maxCharacters; i++) {
+        for(let i = s; i < config.pools.event.maxCharacters && i - s + 1 <= n; i++) {
             sum += dp[i];
             output += `At least ${i - s + 1} new event character(s): ${printPercentage(1 - sum)}<br>`;
         }
@@ -116,7 +116,7 @@ function calculateCollabSuccessProbability() {
     let dp = calculateSuccessProbability(n, config.pools.collab.maxCharacters, s, config.pools.collab.probability);
     let output = '';
     let sum = 0;
-    for(let i = s; i < config.pools.collab.maxCharacters; i++) {
+    for(let i = s; i < config.pools.collab.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
         output += `At least ${i - s + 1} new collaborate character(s): ${printPercentage(1 - sum)}<br>`;
     }
@@ -131,7 +131,7 @@ function calculateRateupSuccessProbability() {
     let dp = calculateSuccessProbability(n, config.pools.rateup.maxCharacters, s, config.pools.rateup.probability);
     let output = '';
     let sum = 0;
-    for(let i = s; i < config.pools.rateup.maxCharacters; i++) {
+    for(let i = s; i < config.pools.rateup.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
         output += `At least ${i - s + 1} new rate-up character(s): ${printPercentage(1 - sum)}<br>`;
     }

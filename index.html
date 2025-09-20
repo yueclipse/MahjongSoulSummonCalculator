@@ -28,7 +28,7 @@
                 <label for="n-event">Expected number of summons</label>
                 <input type="number" id="n-event">
                 <span id="n-event-error" class="error-text"></span>
-                <label for="s-event" id="s-event-label">Number of event characters already summoned</label>
+                <label for="s-event" id="s-event-label">Number of distinct event characters already summoned</label>
                 <input type="number" id="s-event">
                 <span id="s-event-error" class="error-text"></span>
                 <button onclick="calculateEventSuccessProbability()">Calculate</button>
@@ -85,7 +85,7 @@
                 <label for="n-collab">Expected number of summons</label>
                 <input type="number" id="n-collab">
                 <span id="n-collab-error" class="error-text"></span>
-                <label for="s-collab">Number of collaborate characters already summoned</label>
+                <label for="s-collab">Number of distinct collaborate characters already summoned</label>
                 <input type="number" id="s-collab">
                 <span id="s-collab-error" class="error-text"></span>
                 <button onclick="calculateCollabSuccessProbability()">Calculate</button>
@@ -115,7 +115,7 @@
                 <label for="n-rateup">Expected number of summons</label>
                 <input type="number" id="n-rateup">
                 <span id="n-rateup-error" class="error-text"></span>
-                <label for="s-rateup">Number of rate-up characters already summoned</label>
+                <label for="s-rateup">Number of distinct rate-up characters already summoned</label>
                 <input type="number" id="s-rateup">
                 <span id="s-rateup-error" class="error-text"></span>
                 <button onclick="calculateRateupSuccessProbability()">Calculate</button>
@@ -181,7 +181,7 @@
                 <label for="n-custom">Expected number of draws</label>
                 <input type="number" id="n-custom">
                 <span id="n-custom-error" class="error-text"></span>
-                <label for="s-custom">Number of prizes already pulled (Ignore if Pool Size is 1)</label>
+                <label for="s-custom">Number of distinct prizes already pulled (Ignore if Pool Size is 1)</label>
                 <input type="number" id="s-custom">
                 <span id="s-custom-error" class="error-text"></span>
                 <button onclick="calculateCustomSuccessProbability()">Calculate</button>
