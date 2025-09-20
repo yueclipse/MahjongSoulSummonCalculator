@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahjong Soul Summon Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+        }
+        input {
+            width: 80px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .event-button {
+            width: 100%;
+            max-width: 800px; /* Adjust based on desired max width for alignment */
+            padding: 12px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .event-button:hover {
+            background-color: #0056b3;
+        }
+        .event-button.visible {
+            display: block;
+        }
+        .sub-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px; /* Match the event button max-width */
+            gap: 10px;
+        }
+        .pool-button {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pool-button:hover {
+            background-color: #545b62;
+        }
+        .content {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .content.active {
+            display: block;
+        }
+        .pool-section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .pool-section h3 {
+            margin-top: 0;
+        }
+        .calc-group {
+            margin-bottom: 20px;
+        }
+        .calc-group label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .calc-group input {
+            width: 50%;
+            display: block;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .calc-group input.invalid {
+            border-color: #dc3545;
+        }
+        .error-text {
+            color:#dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        .error-text.visible {
+            display: block;
+        }
+        .calc-group button {
+            padding: 5px 10px;
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .calc-group button:hover {
+            background-color: #218838;
+        }
+        /* Assume outputs will be added dynamically or statically here */
+        .output {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .explanation-section {
+            margin-top: 10px;
+        }
+        .explanation-toggle {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .explanation-toggle:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .explanation-content {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .explanation-content.visible {
+            display: block;
+        }
+        .explanation-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .explanation-content li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mahjong Soul Summon Calculator</h1>
+
+    <div class="button-container">
+        <button id="event-btn" class="event-button"></button>
+        <div class="sub-buttons">
+            <button id="limited-btn"class="pool-button">Limited</button>
+            <button id="collab-btn" class="pool-button">Collaborate</button>
+            <button id="rateup-btn" class="pool-button">Rate Up</button>
+            <button id="normal-btn" class="pool-button">Normal</button>
+            <button id="custom-btn" class="pool-button">Custom</button>
+        </div>
+    </div>
+
+    <div id="event-content" class="content">
+        <div class="pool-section">
+            <h3 id='event-title'>Event Pool</h3>
+            
+            <div class="calc-group">
+                <label for="n-event">Expected number of summons</label>
+                <input type="number" id="n-event">
+                <span id="n-event-error" class="error-text"></span>
+                <label for="s-event" id="s-event-label">Number of event characters already summoned</label>
+                <input type="number" id="s-event">
+                <span id="s-event-error" class="error-text"></span>
+                <button onclick="calculateEventSuccessProbability()">Calculate</button>
+                <div id="output-event-success" class="output"></div>
+            </div>
+            
+            <div class="calc-group">
+                <label for="n-event-score">Number of summons</label>
+                <input type="number" id="n-event-score">
+                <span id="n-event-score-error" class="error-text"></span>
+                <label for="k-event-score">Number of event characters summoned (including duplicates)</label>
+                <input type="number" id="k-event-score">
+                <span id="k-event-score-error" class="error-text"></span>
+                <button onclick="calculateLuckScore('event', config.pools.event.probability)">Calculate</button>
+                <div id="output-event-score" class="output"></div>
+            </div>
+
+            <div id="event-score-explanation-section" class="explanation-section"></div>
+        </div>
+    </div>
+
+    <div id="limited-content" class="content">
+        <div class="pool-section">
+            <h3>Limited Pool: 1% chance to get the limited character.</h3>
+            
+            <div class="calc-group">
+                <label for="n-limited">Expected number of summons</label>
+                <input type="number" id="n-limited">
+                <span id="n-limited-error" class="error-text"></span>
+                <button onclick="calculateLimitedSuccessProbability()">Calculate</button>
+                <div id="output-limited-success" class="output"></div>
+            </div>
+            
+            <div class="calc-group">
+                <label for="n-limited-score">Number of summons</label>
+                <input type="number" id="n-limited-score">
+                <span id="n-limited-score-error" class="error-text"></span>
+                <label for="k-limited-score">Number of limited characters summoned</label>
+                <input type="number" id="k-limited-score">
+                <span id="k-limited-score-error" class="error-text"></span>
+                <button onclick="calculateLuckScore('limited', config.pools.limited.probability)">Calculate</button>
+                <div id="output-limited-score" class="output"></div>
+            </div>
+
+            <div id="limited-score-explanation-section" class="explanation-section"></div>
+        </div>
+    </div>
+
+    <div id="collab-content" class="content">
+        <div class="pool-section">
+            <h3>Collaborate Pool: 2.95% chance to get any one of four collaborate characters.</h3>
+            
+            <div class="calc-group">
+                <label for="n-collab">Expected number of summons</label>
+                <input type="number" id="n-collab">
+                <span id="n-collab-error" class="error-text"></span>
+                <label for="s-collab">Number of collaborate characters already summoned</label>
+                <input type="number" id="s-collab">
+                <span id="s-collab-error" class="error-text"></span>
+                <button onclick="calculateCollabSuccessProbability()">Calculate</button>
+                <div id="output-collab-success" class="output"></div>
+            </div>
+            
+            <div class="calc-group">
+                <label for="n-collab-score">Number of summons</label>
+                <input type="number" id="n-collab-score">
+                <span id="n-collab-score-error" class="error-text"></span>
+                <label for="k-collab-score">Number of collaborate characters summoned (including duplicates)</label>
+                <input type="number" id="k-collab-score">
+                <span id="k-collab-score-error" class="error-text"></span>
+                <button onclick="calculateLuckScore('collab', config.pools.collab.probability)">Calculate</button>
+                <div id="output-collab-score" class="output"></div>
+            </div>
+
+            <div id="collab-score-explanation-section" class="explanation-section"></div>
+        </div>
+    </div>
+
+    <div id="rateup-content" class="content">
+        <div class="pool-section">
+            <h3>Rate Up Pool: 2.95% chance to get any one of two rate-up characters.</h3>
+            
+            <div class="calc-group">
+                <label for="n-rateup">Expected number of summons</label>
+                <input type="number" id="n-rateup">
+                <span id="n-rateup-error" class="error-text"></span>
+                <label for="s-rateup">Number of rate-up characters already summoned</label>
+                <input type="number" id="s-rateup">
+                <span id="s-rateup-error" class="error-text"></span>
+                <button onclick="calculateRateupSuccessProbability()">Calculate</button>
+                <div id="output-rateup-success" class="output"></div>
+            </div>
+            
+            <div class="calc-group">
+                <label for="n-rateup-score">Number of summons</label>
+                <input type="number" id="n-rateup-score">
+                <span id="n-rateup-score-error" class="error-text"></span>
+                <label for="k-rateup-score">Number of rate-up characters summoned (including duplicates)</label>
+                <input type="number" id="k-rateup-score">
+                <span id="k-rateup-score-error" class="error-text"></span>
+                <button onclick="calculateLuckScore('rateup', config.pools.rateup.probability)">Calculate</button>
+                <div id="output-rateup-score" class="output"></div>
+            </div>
+
+            <div id="rateup-score-explanation-section" class="explanation-section"></div>
+        </div>
+    </div>
+
+    <div id="normal-content" class="content">
+        <div class="pool-section">
+            <h3>Normal Pool: 5% chance to get a character.</h3>
+            
+            <div class="calc-group">
+                <label for="n-normal">Expected number of summons</label>
+                <input type="number" id="n-normal">
+                <span id="n-normal-error" class="error-text"></span>
+                <button onclick="calculateNormalSuccessProbability()">Calculate</button>
+                <div id="output-normal-success" class="output"></div>
+            </div>
+            
+            <div class="calc-group">
+                <label for="n-normal-score">Number of summons</label>
+                <input type="number" id="n-normal-score">
+                <span id="n-normal-score-error" class="error-text"></span>
+                <label for="k-normal-score">Number of characters summoned (including duplicates)</label>
+                <input type="number" id="k-normal-score">
+                <span id="k-normal-score-error" class="error-text"></span>
+                <button onclick="calculateLuckScore('normal', config.pools.normal.probability)">Calculate</button>
+                <div id="output-normal-score" class="output"></div>
+            </div>
+
+            <div id="normal-score-explanation-section" class="explanation-section"></div>
+        </div>
+    </div>
+
+    <div id="custom-content" class="content">
+        <div class="pool-section">
+            <h3>Custom Pool: For example, 7.35% chance to get any one of four rate-up decorations. Put 7.35 in probability and 4 in pool size.</h3>
+            
+            <div class="calc-group">
+                <label for="p-custom">Probability (%)</label>
+                <input type="number" step="0.1" id="p-custom">
+                <span id="p-custom-error" class="error-text"></span>
+                <label for="m-custom">Pool Size</label>
+                <input type="number" id="m-custom">
+                <span id="m-custom-error" class="error-text"></span>
+            </div>
+
+            <div class="calc-group">
+                <label for="n-custom">Expected number of draws</label>
+                <input type="number" id="n-custom">
+                <span id="n-custom-error" class="error-text"></span>
+                <label for="s-custom">Number of prizes already pulled (Ignore if Pool Size is 1)</label>
+                <input type="number" id="s-custom">
+                <span id="s-custom-error" class="error-text"></span>
+                <button onclick="calculateCustomSuccessProbability()">Calculate</button>
+                <div id="output-custom-success" class="output"></div>
+            </div>
+            
+            <div class="calc-group">
+                <label for="n-custom-score">Number of draws</label>
+                <input type="number" id="n-custom-score">
+                <span id="n-custom-score-error" class="error-text"></span>
+                <label for="k-custom-score">Number of prizes pulled (including duplicates)</label>
+                <input type="number" id="k-custom-score">
+                <span id="k-custom-score-error" class="error-text"></span>
+                <button onclick="calculateLuckScore('custom', 0)">Calculate</button>
+                <div id="output-custom-score" class="output"></div>
+            </div>
+
+            <div id="custom-score-explanation-section" class="explanation-section"></div>
+        </div>
+    </div>
+
+    <script src='script.js'></script>
+</body>
+</html>

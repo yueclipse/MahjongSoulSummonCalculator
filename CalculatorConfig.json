@@ -1,0 +1,36 @@
+{
+	"pools": {
+		"event": {
+			"probability": 0,
+			"maxCharacters": 1,
+			"buttonTitle": "Current Event 9/1 - 10/32",
+			"title": "Event Pool: 1% chance to get the event character."
+		},
+		"limited": {
+			"probability": 0.01,
+			"maxCharacters": 1
+		},
+		"collab": {
+			"probability": 0.0295,
+			"maxCharacters": 4
+		},
+		"rateup": {
+			"probability": 0.0295,
+			"maxCharacters": 2
+		},
+		"normal": {
+			"probability": 0.05,
+			"maxCharacters": 1
+		}
+	},
+	"settings": {
+		"nMin": 1,
+		"nMax": 1000,
+		"sMin": 0,
+		"kMin": 0,
+		"pMin": 0.0001,
+		"pMax": 99.9999,
+		"mMin": 1,
+		"mMax": 10
+	}
+}
