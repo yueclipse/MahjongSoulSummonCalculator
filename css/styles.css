@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f5f5f5;
+}
+h1 {
+    text-align: center;
+}
+input {
+    width: 80px;
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.event-button {
+    width: 100%;
+    max-width: 800px; /* Adjust based on desired max width for alignment */
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: none;
+}
+.event-button:hover {
+    background-color: #0056b3;
+}
+.event-button.visible {
+    display: block;
+}
+.sub-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px; /* Match the event button max-width */
+    gap: 10px;
+}
+.pool-button {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.pool-button:hover {
+    background-color: #545b62;
+}
+.content {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.content.active {
+    display: block;
+}
+.pool-section {
+    background: white;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.pool-section h3 {
+    margin-top: 0;
+}
+.calc-group {
+    margin-bottom: 20px;
+}
+.calc-group label {
+    display: block;
+    margin: 10px 0 5px;
+}
+.calc-group input {
+    width: 50%;
+    display: block;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+.calc-group input.invalid {
+    border-color: #dc3545;
+}
+.error-text {
+    color:#dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+.error-text.visible {
+    display: block;
+}
+.calc-group button {
+    padding: 5px 10px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.calc-group button:hover {
+    background-color: #218838;
+}
+/* Assume outputs will be added dynamically or statically here */
+.output {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.explanation-section {
+    margin-top: 10px;
+}
+.explanation-toggle {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.explanation-toggle:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+.explanation-content {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.explanation-content.visible {
+    display: block;
+}
+.explanation-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+.explanation-content li {
+    margin-bottom: 5px;
+}
