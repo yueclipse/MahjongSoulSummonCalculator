@@ -30,9 +30,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     const buttons = {
         'event-btn': 'event-content',
         'limited-btn': 'limited-content',
-        'normal-btn': 'normal-content',
-        'rateup-btn': 'rateup-content',
         'collab-btn': 'collab-content',
+        'doubleup-btn': 'doubleup-content',
+        'singleup-btn': 'singleup-content',
+        'normal-btn': 'normal-content',
         'custom-btn': 'custom-content'
     };
 
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     // Set up score explanation
-    const pools = ['event', 'limited', 'collab', 'rateup', 'normal', 'custom'];
+    const pools = ['event', 'limited', 'collab', 'doubleup', 'singleup', 'normal', 'custom'];
 
     pools.forEach(pool => {
         document.getElementById(`${pool}-score-explanation-section`).innerHTML = createLuckScoreExplanation(pool);
@@ -123,19 +124,27 @@ function calculateCollabSuccessProbability() {
     document.getElementById('output-collab-success').innerHTML = `<p>${output}</p>`;
 }
 
-function calculateRateupSuccessProbability() {
-    const n = parseInt(document.getElementById('n-rateup').value);
-    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-rateup')) return;
-    const s = parseInt(document.getElementById('s-rateup').value);
-    if(!validateInput(s, config.settings.sMin, config.pools.rateup.maxCharacters - 1, 's-rateup')) return;
-    let dp = calculateSuccessProbability(n, config.pools.rateup.maxCharacters, s, config.pools.rateup.probability);
+function calculateDoubleUpSuccessProbability() {
+    const n = parseInt(document.getElementById('n-doubleup').value);
+    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-doubleup')) return;
+    const s = parseInt(document.getElementById('s-doubleup').value);
+    if(!validateInput(s, config.settings.sMin, config.pools.doubleup.maxCharacters - 1, 's-doubleup')) return;
+    let dp = calculateSuccessProbability(n, config.pools.doubleup.maxCharacters, s, config.pools.doubleup.probability);
     let output = '';
     let sum = 0;
-    for(let i = s; i < config.pools.rateup.maxCharacters && i - s + 1 <= n; i++) {
+    for(let i = s; i < config.pools.doubleup.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
         output += `At least ${i - s + 1} new rate-up character(s): ${printPercentage(1 - sum)}<br>`;
     }
-    document.getElementById('output-rateup-success').innerHTML = `<p>${output}</p>`;
+    document.getElementById('output-doubleup-success').innerHTML = `<p>${output}</p>`;
+}
+
+function calculateSingleUpSuccessProbability() {
+    const n = parseInt(document.getElementById('n-singleup').value);
+    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-singleup')) return;
+    let dp = calculateSuccessProbability(n, config.pools.singleup.maxCharacters, 0, config.pools.singleup.probability);
+    let result = 1 - dp[0];
+    document.getElementById('output-singleup-success').textContent = `Probability of success: ${printPercentage(result)}`;
 }
 
 function calculateNormalSuccessProbability() {
@@ -224,9 +233,13 @@ function getDefaultConfig() {
                 "probability": 0.0295,
                 "maxCharacters": 4
             },
-            "rateup": {
+            "doubleup": {
                 "probability": 0.0295,
                 "maxCharacters": 2
+            },
+            "singleup": {
+                "probability": 0.0295,
+                "maxCharacters": 1
             },
             "normal": {
                 "probability": 0.05,

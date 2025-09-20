@@ -40,6 +40,7 @@ input {
     width: 100%;
     max-width: 800px; /* Match the event button max-width */
     gap: 10px;
+    margin-bottom: 10px;
 }
 .pool-button {
     flex: 1;

@@ -14,9 +14,13 @@
 			"probability": 0.0295,
 			"maxCharacters": 4
 		},
-		"rateup": {
+		"doubleup": {
 			"probability": 0.0295,
 			"maxCharacters": 2
+		},
+		"singleup": {
+			"probability": 0.0295,
+			"maxCharacters": 1
 		},
 		"normal": {
 			"probability": 0.05,

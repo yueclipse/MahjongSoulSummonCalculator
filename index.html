@@ -14,8 +14,11 @@
         <div class="sub-buttons">
             <button id="limited-btn"class="pool-button">Limited</button>
             <button id="collab-btn" class="pool-button">Collaborate</button>
-            <button id="rateup-btn" class="pool-button">Rate Up</button>
             <button id="normal-btn" class="pool-button">Normal</button>
+        </div>
+        <div class="sub-buttons">
+            <button id="doubleup-btn" class="pool-button">Double Up</button>
+            <button id="singleup-btn" class="pool-button">Single Up</button>
             <button id="custom-btn" class="pool-button">Custom</button>
         </div>
     </div>
@@ -107,33 +110,60 @@
         </div>
     </div>
 
-    <div id="rateup-content" class="content">
+    <div id="doubleup-content" class="content">
         <div class="pool-section">
-            <h3>Rate Up Pool: 2.95% chance to get any one of two rate-up characters.</h3>
+            <h3>Double Rate-Up Pool: 2.95% chance to get any one of two rate-up characters.</h3>
             
             <div class="calc-group">
-                <label for="n-rateup">Expected number of summons</label>
-                <input type="number" id="n-rateup">
-                <span id="n-rateup-error" class="error-text"></span>
-                <label for="s-rateup">Number of distinct rate-up characters already summoned</label>
-                <input type="number" id="s-rateup">
-                <span id="s-rateup-error" class="error-text"></span>
-                <button onclick="calculateRateupSuccessProbability()">Calculate</button>
-                <div id="output-rateup-success" class="output"></div>
+                <label for="n-doubleup">Expected number of summons</label>
+                <input type="number" id="n-doubleup">
+                <span id="n-doubleup-error" class="error-text"></span>
+                <label for="s-doubleup">Number of distinct rate-up characters already summoned</label>
+                <input type="number" id="s-doubleup">
+                <span id="s-doubleup-error" class="error-text"></span>
+                <button onclick="calculateDoubleUpSuccessProbability()">Calculate</button>
+                <div id="output-doubleup-success" class="output"></div>
             </div>
             
             <div class="calc-group">
-                <label for="n-rateup-score">Number of summons</label>
-                <input type="number" id="n-rateup-score">
-                <span id="n-rateup-score-error" class="error-text"></span>
-                <label for="k-rateup-score">Number of rate-up characters summoned (including duplicates)</label>
-                <input type="number" id="k-rateup-score">
-                <span id="k-rateup-score-error" class="error-text"></span>
-                <button onclick="calculateLuckScore('rateup', config.pools.rateup.probability)">Calculate</button>
-                <div id="output-rateup-score" class="output"></div>
+                <label for="n-doubleup-score">Number of summons</label>
+                <input type="number" id="n-doubleup-score">
+                <span id="n-doubleup-score-error" class="error-text"></span>
+                <label for="k-doubleup-score">Number of rate-up characters summoned (including duplicates)</label>
+                <input type="number" id="k-doubleup-score">
+                <span id="k-doubleup-score-error" class="error-text"></span>
+                <button onclick="calculateLuckScore('doubleup', config.pools.doubleup.probability)">Calculate</button>
+                <div id="output-doubleup-score" class="output"></div>
             </div>
 
-            <div id="rateup-score-explanation-section" class="explanation-section"></div>
+            <div id="doubleup-score-explanation-section" class="explanation-section"></div>
+        </div>
+    </div>
+
+    <div id="singleup-content" class="content">
+        <div class="pool-section">
+            <h3>Single Rate-Up Pool: 2.95% chance to get the specific rate-up character.</h3>
+            
+            <div class="calc-group">
+                <label for="n-singleup">Expected number of summons</label>
+                <input type="number" id="n-singleup">
+                <span id="n-singleup-error" class="error-text"></span>
+                <button onclick="calculateSingleUpSuccessProbability()">Calculate</button>
+                <div id="output-singleup-success" class="output"></div>
+            </div>
+            
+            <div class="calc-group">
+                <label for="n-singleup-score">Number of summons</label>
+                <input type="number" id="n-singleup-score">
+                <span id="n-singleup-score-error" class="error-text"></span>
+                <label for="k-singleup-score">Number of rate-up characters summoned</label>
+                <input type="number" id="k-singleup-score">
+                <span id="k-singleup-score-error" class="error-text"></span>
+                <button onclick="calculateLuckScore('singleup', config.pools.singleup.probability)">Calculate</button>
+                <div id="output-singleup-score" class="output"></div>
+            </div>
+
+            <div id="singleup-score-explanation-section" class="explanation-section"></div>
         </div>
     </div>
 
