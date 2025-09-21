@@ -10,13 +10,17 @@ document.addEventListener('DOMContentLoaded', async function() {
         config = getDefaultConfig();
     }
 
+    await initLocalization();
+
     // Setup event section if event probability is set.
     const eventBtn = document.getElementById('event-btn');
     if(config.pools.event.probability > 0) {
         eventBtn.classList.add('visible');
-        document.getElementById('event-btn').textContent = config.pools.event.buttonTitle;
         document.getElementById('event-content').classList.add('active');
-        document.getElementById('event-title').textContent = config.pools.event.title;
+        let buttonTitle = languageManager ? config.pools.event.buttonTitle[languageManager.currentLanguage] : config.pools.event.buttonTitle['en'];
+        document.getElementById('event-btn').textContent = buttonTitle;
+        let title = languageManager ? config.pools.event.title[languageManager.currentLanguage] : config.pools.event.title['en'];
+        document.getElementById('event-title').textContent = title;
         if(config.pools.event.maxCharacters <= 1) {
             document.getElementById('s-event-label').style.display = 'none';
             document.getElementById('s-event').style.display = 'none';

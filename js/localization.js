@@ -45,12 +45,16 @@ class LanguageManager {
 		pools.forEach(pool => {
 		    document.getElementById(`${pool}-score-explanation-section`).innerHTML = createLuckScoreExplanation(pool);
 		});
+
+		// setup event text
+        document.getElementById('event-btn').textContent = config.pools.event.buttonTitle[languageManager.currentLanguage];
+        document.getElementById('event-title').textContent = config.pools.event.title[languageManager.currentLanguage];
 	}
 }
 
 let languageManager = null;
 
-document.addEventListener('DOMContentLoaded', async function() {
+async function initLocalization() {
     try {
         const response = await fetch('i18n/zh-TW.json');
         languageManager = new LanguageManager(await response.json());
@@ -62,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 	document.getElementById('language-selector').addEventListener('change', function() {
 		if(languageManager) languageManager.setLanguage(this.value);
 	});
-});
+}
 
 function t(key, vars = {}) {
 	let text = languageManager ? languageManager.translate(key) : key;

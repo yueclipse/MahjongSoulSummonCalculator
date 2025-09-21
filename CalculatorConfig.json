@@ -3,8 +3,14 @@
 		"event": {
 			"probability": 0,
 			"maxCharacters": 1,
-			"buttonTitle": "Current Event 9/1 - 10/32",
-			"title": "Event Pool: 1% chance to get the event character."
+			"buttonTitle": {
+				"en": "Current Event",
+				"zh-TW": "進行中活動"
+			},
+			"title": {
+				"en": "Event Pool",
+				"zh-TW": "活動池"
+			}
 		},
 		"limited": {
 			"probability": 0.01,
