@@ -7,52 +7,52 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Mahjong Soul Summon Calculator</h1>
+    <h1 data-translate="Mahjong Soul Summon Calculator">Mahjong Soul Summon Calculator</h1>
 
     <a href="https://github.com/yueclipse/MahjongSoulSummonCalculator" target="_blank" class="github-link">
         <svg class="github-icon" viewBox="0 0 24 24" fill="#333">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
-        <span class="github-text">Created by yueclipse</span>
+        <span class="github-text" data-translate="Created by yueclipse">Created by yueclipse</span>
     </a>
 
     <div class="button-container">
         <button id="event-btn" class="event-button"></button>
         <div class="sub-buttons">
-            <button id="limited-btn"class="pool-button">Limited</button>
-            <button id="collab-btn" class="pool-button">Collaborate</button>
-            <button id="normal-btn" class="pool-button">Normal</button>
+            <button id="limited-btn"class="pool-button" data-translate="Limited">Limited</button>
+            <button id="collab-btn" class="pool-button" data-translate="Collaborate">Collaborate</button>
+            <button id="normal-btn" class="pool-button" data-translate="Normal">Normal</button>
         </div>
         <div class="sub-buttons">
-            <button id="doubleup-btn" class="pool-button">Double Up</button>
-            <button id="singleup-btn" class="pool-button">Single Up</button>
-            <button id="custom-btn" class="pool-button">Custom</button>
+            <button id="doubleup-btn" class="pool-button" data-translate="Double Up">Double Up</button>
+            <button id="singleup-btn" class="pool-button" data-translate="Single Up">Single Up</button>
+            <button id="custom-btn" class="pool-button" data-translate="Custom">Custom</button>
         </div>
     </div>
 
     <div id="event-content" class="content">
         <div class="pool-section">
-            <h3 id='event-title'>Event Pool</h3>
+            <h3 id='event-title' data-translate="Event Title"></h3>
             
             <div class="calc-group">
-                <label for="n-event">Expected number of summons</label>
+                <label for="n-event" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-event">
                 <span id="n-event-error" class="error-text"></span>
-                <label for="s-event" id="s-event-label">Number of distinct event characters already summoned</label>
+                <label for="s-event" id="s-event-label" data-translate="Number of distinct event characters already summoned">Number of distinct event characters already summoned</label>
                 <input type="number" id="s-event">
                 <span id="s-event-error" class="error-text"></span>
-                <button onclick="calculateEventSuccessProbability()">Calculate</button>
+                <button onclick="calculateEventSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-event-success" class="output"></div>
             </div>
             
             <div class="calc-group">
-                <label for="n-event-score">Number of summons</label>
+                <label for="n-event-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-event-score">
                 <span id="n-event-score-error" class="error-text"></span>
-                <label for="k-event-score">Number of event characters summoned (including duplicates)</label>
+                <label for="k-event-score" data-translate="Number of event characters summoned (including duplicates)">Number of event characters summoned (including duplicates)</label>
                 <input type="number" id="k-event-score">
                 <span id="k-event-score-error" class="error-text"></span>
-                <button onclick="calculateLuckScore('event', config.pools.event.probability)">Calculate</button>
+                <button onclick="calculateLuckScore('event', config.pools.event.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-event-score" class="output"></div>
             </div>
 
@@ -62,24 +62,24 @@
 
     <div id="limited-content" class="content">
         <div class="pool-section">
-            <h3>Limited Pool: 1% chance to get the limited character.</h3>
+            <h3 data-translate="Limited Pool: 1% chance to get the limited character.">Limited Pool: 1% chance to get the limited character.</h3>
             
             <div class="calc-group">
-                <label for="n-limited">Expected number of summons</label>
+                <label for="n-limited" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-limited">
                 <span id="n-limited-error" class="error-text"></span>
-                <button onclick="calculateLimitedSuccessProbability()">Calculate</button>
+                <button onclick="calculateLimitedSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-limited-success" class="output"></div>
             </div>
             
             <div class="calc-group">
-                <label for="n-limited-score">Number of summons</label>
+                <label for="n-limited-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-limited-score">
                 <span id="n-limited-score-error" class="error-text"></span>
-                <label for="k-limited-score">Number of limited characters summoned</label>
+                <label for="k-limited-score" data-translate="Number of limited characters summoned">Number of limited characters summoned</label>
                 <input type="number" id="k-limited-score">
                 <span id="k-limited-score-error" class="error-text"></span>
-                <button onclick="calculateLuckScore('limited', config.pools.limited.probability)">Calculate</button>
+                <button onclick="calculateLuckScore('limited', config.pools.limited.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-limited-score" class="output"></div>
             </div>
 
@@ -89,27 +89,27 @@
 
     <div id="collab-content" class="content">
         <div class="pool-section">
-            <h3>Collaborate Pool: 2.95% chance to get any one of four collaborate characters.</h3>
+            <h3 data-translate="Collaborate Pool: 2.95% chance to get any one of four collaborate characters.">Collaborate Pool: 2.95% chance to get any one of four collaborate characters.</h3>
             
             <div class="calc-group">
-                <label for="n-collab">Expected number of summons</label>
+                <label for="n-collab" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-collab">
                 <span id="n-collab-error" class="error-text"></span>
-                <label for="s-collab">Number of distinct collaborate characters already summoned</label>
+                <label for="s-collab" data-translate="Number of distinct collaborate characters already summoned">Number of distinct collaborate characters already summoned</label>
                 <input type="number" id="s-collab">
                 <span id="s-collab-error" class="error-text"></span>
-                <button onclick="calculateCollabSuccessProbability()">Calculate</button>
+                <button onclick="calculateCollabSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-collab-success" class="output"></div>
             </div>
             
             <div class="calc-group">
-                <label for="n-collab-score">Number of summons</label>
+                <label for="n-collab-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-collab-score">
                 <span id="n-collab-score-error" class="error-text"></span>
-                <label for="k-collab-score">Number of collaborate characters summoned (including duplicates)</label>
+                <label for="k-collab-score" data-translate="Number of collaborate characters summoned (including duplicates)">Number of collaborate characters summoned (including duplicates)</label>
                 <input type="number" id="k-collab-score">
                 <span id="k-collab-score-error" class="error-text"></span>
-                <button onclick="calculateLuckScore('collab', config.pools.collab.probability)">Calculate</button>
+                <button onclick="calculateLuckScore('collab', config.pools.collab.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-collab-score" class="output"></div>
             </div>
 
@@ -119,27 +119,27 @@
 
     <div id="doubleup-content" class="content">
         <div class="pool-section">
-            <h3>Double Rate-Up Pool: 2.95% chance to get any one of two rate-up characters.</h3>
+            <h3 data-translate="Double Rate-Up Pool: 2.95% chance to get any one of two rate-up characters.">Double Rate-Up Pool: 2.95% chance to get any one of two rate-up characters.</h3>
             
             <div class="calc-group">
-                <label for="n-doubleup">Expected number of summons</label>
+                <label for="n-doubleup" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-doubleup">
                 <span id="n-doubleup-error" class="error-text"></span>
-                <label for="s-doubleup">Number of distinct rate-up characters already summoned</label>
+                <label for="s-doubleup" data-translate="Number of distinct rate-up characters already summoned">Number of distinct rate-up characters already summoned</label>
                 <input type="number" id="s-doubleup">
                 <span id="s-doubleup-error" class="error-text"></span>
-                <button onclick="calculateDoubleUpSuccessProbability()">Calculate</button>
+                <button onclick="calculateDoubleUpSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-doubleup-success" class="output"></div>
             </div>
             
             <div class="calc-group">
-                <label for="n-doubleup-score">Number of summons</label>
+                <label for="n-doubleup-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-doubleup-score">
                 <span id="n-doubleup-score-error" class="error-text"></span>
-                <label for="k-doubleup-score">Number of rate-up characters summoned (including duplicates)</label>
+                <label for="k-doubleup-score" data-translate="Number of rate-up characters summoned (including duplicates)">Number of rate-up characters summoned (including duplicates)</label>
                 <input type="number" id="k-doubleup-score">
                 <span id="k-doubleup-score-error" class="error-text"></span>
-                <button onclick="calculateLuckScore('doubleup', config.pools.doubleup.probability)">Calculate</button>
+                <button onclick="calculateLuckScore('doubleup', config.pools.doubleup.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-doubleup-score" class="output"></div>
             </div>
 
@@ -149,24 +149,24 @@
 
     <div id="singleup-content" class="content">
         <div class="pool-section">
-            <h3>Single Rate-Up Pool: 2.95% chance to get the specific rate-up character.</h3>
+            <h3 data-translate="Single Rate-Up Pool: 2.95% chance to get the rate-up character.">Single Rate-Up Pool: 2.95% chance to get the rate-up character.</h3>
             
             <div class="calc-group">
-                <label for="n-singleup">Expected number of summons</label>
+                <label for="n-singleup" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-singleup">
                 <span id="n-singleup-error" class="error-text"></span>
-                <button onclick="calculateSingleUpSuccessProbability()">Calculate</button>
+                <button onclick="calculateSingleUpSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-singleup-success" class="output"></div>
             </div>
             
             <div class="calc-group">
-                <label for="n-singleup-score">Number of summons</label>
+                <label for="n-singleup-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-singleup-score">
                 <span id="n-singleup-score-error" class="error-text"></span>
-                <label for="k-singleup-score">Number of rate-up characters summoned</label>
+                <label for="k-singleup-score" data-translate="Number of rate-up characters summoned">Number of rate-up characters summoned</label>
                 <input type="number" id="k-singleup-score">
                 <span id="k-singleup-score-error" class="error-text"></span>
-                <button onclick="calculateLuckScore('singleup', config.pools.singleup.probability)">Calculate</button>
+                <button onclick="calculateLuckScore('singleup', config.pools.singleup.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-singleup-score" class="output"></div>
             </div>
 
@@ -176,24 +176,24 @@
 
     <div id="normal-content" class="content">
         <div class="pool-section">
-            <h3>Normal Pool: 5% chance to get a character.</h3>
+            <h3 data-translate="Normal Pool: 5% chance to get a character.">Normal Pool: 5% chance to get a character.</h3>
             
             <div class="calc-group">
-                <label for="n-normal">Expected number of summons</label>
+                <label for="n-normal" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-normal">
                 <span id="n-normal-error" class="error-text"></span>
-                <button onclick="calculateNormalSuccessProbability()">Calculate</button>
+                <button onclick="calculateNormalSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-normal-success" class="output"></div>
             </div>
             
             <div class="calc-group">
-                <label for="n-normal-score">Number of summons</label>
+                <label for="n-normal-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-normal-score">
                 <span id="n-normal-score-error" class="error-text"></span>
-                <label for="k-normal-score">Number of characters summoned (including duplicates)</label>
+                <label for="k-normal-score" data-translate="Number of characters summoned (including duplicates)">Number of characters summoned (including duplicates)</label>
                 <input type="number" id="k-normal-score">
                 <span id="k-normal-score-error" class="error-text"></span>
-                <button onclick="calculateLuckScore('normal', config.pools.normal.probability)">Calculate</button>
+                <button onclick="calculateLuckScore('normal', config.pools.normal.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-normal-score" class="output"></div>
             </div>
 
@@ -203,36 +203,38 @@
 
     <div id="custom-content" class="content">
         <div class="pool-section">
-            <h3>Custom Pool: For example, 7.35% chance to get any one of four rate-up decorations. Put 7.35 in probability and 4 in pool size.</h3>
+            <h3 data-translate="Custom Pool: For example, 7.35% chance to get any one of four rate-up decorations. Put 7.35 in probability and 4 in pool size.">
+                Custom Pool: For example, 7.35% chance to get any one of four rate-up decorations. Put 7.35 in probability and 4 in pool size.
+            </h3>
             
             <div class="calc-group">
-                <label for="p-custom">Probability (%)</label>
+                <label for="p-custom" data-translate="Probability (%)">Probability (%)</label>
                 <input type="number" step="0.1" id="p-custom">
                 <span id="p-custom-error" class="error-text"></span>
-                <label for="m-custom">Pool Size</label>
+                <label for="m-custom" data-translate="Pool Size">Pool Size</label>
                 <input type="number" id="m-custom">
                 <span id="m-custom-error" class="error-text"></span>
             </div>
 
             <div class="calc-group">
-                <label for="n-custom">Expected number of draws</label>
+                <label for="n-custom" data-translate="Expected number of draws">Expected number of draws</label>
                 <input type="number" id="n-custom">
                 <span id="n-custom-error" class="error-text"></span>
-                <label for="s-custom">Number of distinct prizes already pulled (Ignore if Pool Size is 1)</label>
+                <label for="s-custom" data-translate="Number of distinct prizes already pulled (Ignore if Pool Size is 1)">Number of distinct prizes already pulled (Ignore if Pool Size is 1)</label>
                 <input type="number" id="s-custom">
                 <span id="s-custom-error" class="error-text"></span>
-                <button onclick="calculateCustomSuccessProbability()">Calculate</button>
+                <button onclick="calculateCustomSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-custom-success" class="output"></div>
             </div>
             
             <div class="calc-group">
-                <label for="n-custom-score">Number of draws</label>
+                <label for="n-custom-score" data-translate="Number of draws">Number of draws</label>
                 <input type="number" id="n-custom-score">
                 <span id="n-custom-score-error" class="error-text"></span>
-                <label for="k-custom-score">Number of prizes pulled (including duplicates)</label>
+                <label for="k-custom-score" data-translate="Number of prizes pulled (including duplicates)">Number of prizes pulled (including duplicates)</label>
                 <input type="number" id="k-custom-score">
                 <span id="k-custom-score-error" class="error-text"></span>
-                <button onclick="calculateLuckScore('custom', 0)">Calculate</button>
+                <button onclick="calculateLuckScore('custom', 0)" data-translate="Calculate">Calculate</button>
                 <div id="output-custom-score" class="output"></div>
             </div>
 
@@ -240,6 +242,14 @@
         </div>
     </div>
 
+    <div class="language-selector">
+        <select id="language-selector">
+            <option value="en">English (en)</option>
+            <option value='zh-TW'>繁體中文 (zh-TW)</option>
+        </select>
+    </div>
+
     <script src='js/script.js'></script>
+    <script src='js/localization.js'></script>
 </body>
 </html>

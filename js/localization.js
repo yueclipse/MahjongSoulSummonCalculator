@@ -1,0 +1,72 @@
+class LanguageManager {
+	constructor(translations) {
+		this.currentLanguage = this.detectLanguage();
+		document.getElementById('language-selector').value = this.currentLanguage;
+		this.translations = translations;
+	}
+
+	detectLanguage() {
+		const saved = localStorage.getItem('preferred-language');
+		if(saved) 
+			return saved;
+
+		const browserLang = navigator.language || navigator.userLanguage;
+		if(browserLang.includes('TW')) 
+			return 'zh-TW';
+
+		return 'en';
+	}
+
+	setLanguage(language) {
+		this.currentLanguage = language;
+		localStorage.setItem('preferred-language', language);
+		this.updatePage();
+	}
+
+	translate(key) {
+		if(this.currentLanguage == 'en')
+			return key; // origial English text
+		return this.translations[key] ? this.translations[key] : key;
+	}
+
+	updatePage() {
+		const elements = document.querySelectorAll('[data-translate]');
+
+		elements.forEach(element => {
+			const key = element.getAttribute('data-translate');
+			element.textContent = this.translate(key);
+		});
+
+		document.title = this.translate('Mahjong Soul Summon Calculator');
+
+		// setup luck score explanation
+	    const pools = ['event', 'limited', 'collab', 'doubleup', 'singleup', 'normal', 'custom'];
+
+		pools.forEach(pool => {
+		    document.getElementById(`${pool}-score-explanation-section`).innerHTML = createLuckScoreExplanation(pool);
+		});
+	}
+}
+
+let languageManager = null;
+
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        const response = await fetch('i18n/zh-TW.json');
+        languageManager = new LanguageManager(await response.json());
+        languageManager.updatePage();
+    } catch(error) {
+        console.log('Fail to load zh-TW.json and initialize LanguageManager');
+    }
+
+	document.getElementById('language-selector').addEventListener('change', function() {
+		if(languageManager) languageManager.setLanguage(this.value);
+	});
+});
+
+function t(key, vars = {}) {
+	let text = languageManager ? languageManager.translate(key) : key;
+	for(const [k, v] of Object.entries(vars))
+		text = text.replace(`{${k}}`, v);
+	return text;
+}

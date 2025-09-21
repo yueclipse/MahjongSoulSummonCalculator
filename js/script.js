@@ -47,13 +47,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById(contentId).classList.add('active');
         });
     });
-
-    // Set up score explanation
-    const pools = ['event', 'limited', 'collab', 'doubleup', 'singleup', 'normal', 'custom'];
-
-    pools.forEach(pool => {
-        document.getElementById(`${pool}-score-explanation-section`).innerHTML = createLuckScoreExplanation(pool);
-    });
 });
 
 function printPercentage(p) {
@@ -92,12 +85,12 @@ function calculateEventSuccessProbability() {
         let sum = 0;
         for(let i = s; i < config.pools.event.maxCharacters && i - s + 1 <= n; i++) {
             sum += dp[i];
-            output += `At least ${i - s + 1} new event character(s): ${printPercentage(1 - sum)}<br>`;
+            output += t("At least {0} new event character(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
         }
         document.getElementById('output-event-success').innerHTML = `<p>${output}</p>`;
     } else {
         let result = 1 - dp[0];
-        document.getElementById('output-event-success').textContent = `Probability of success: ${printPercentage(result)}`;
+        document.getElementById('output-event-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
     }
 }
 
@@ -106,7 +99,7 @@ function calculateLimitedSuccessProbability() {
     if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-limited')) return;
     let dp = calculateSuccessProbability(n, config.pools.limited.maxCharacters, 0, config.pools.limited.probability);
     let result = 1 - dp[0];
-    document.getElementById('output-limited-success').textContent = `Probability of success: ${printPercentage(result)}`;
+    document.getElementById('output-limited-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
 }
 
 function calculateCollabSuccessProbability() {
@@ -119,7 +112,7 @@ function calculateCollabSuccessProbability() {
     let sum = 0;
     for(let i = s; i < config.pools.collab.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
-        output += `At least ${i - s + 1} new collaborate character(s): ${printPercentage(1 - sum)}<br>`;
+        output += t("At least {0} new collaborate character(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
     }
     document.getElementById('output-collab-success').innerHTML = `<p>${output}</p>`;
 }
@@ -134,7 +127,7 @@ function calculateDoubleUpSuccessProbability() {
     let sum = 0;
     for(let i = s; i < config.pools.doubleup.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
-        output += `At least ${i - s + 1} new rate-up character(s): ${printPercentage(1 - sum)}<br>`;
+        output += t("At least {0} new rate-up character(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
     }
     document.getElementById('output-doubleup-success').innerHTML = `<p>${output}</p>`;
 }
@@ -144,7 +137,7 @@ function calculateSingleUpSuccessProbability() {
     if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-singleup')) return;
     let dp = calculateSuccessProbability(n, config.pools.singleup.maxCharacters, 0, config.pools.singleup.probability);
     let result = 1 - dp[0];
-    document.getElementById('output-singleup-success').textContent = `Probability of success: ${printPercentage(result)}`;
+    document.getElementById('output-singleup-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
 }
 
 function calculateNormalSuccessProbability() {
@@ -152,7 +145,7 @@ function calculateNormalSuccessProbability() {
     if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-normal')) return;
     let dp = calculateSuccessProbability(n, config.pools.normal.maxCharacters, 0, config.pools.normal.probability);
     let result = 1 - dp[0];
-    document.getElementById('output-normal-success').textContent = `Probability of success: ${printPercentage(result)}`;
+    document.getElementById('output-normal-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
 }
 
 function calculateCustomSuccessProbability() {
@@ -171,12 +164,12 @@ function calculateCustomSuccessProbability() {
         let sum = 0;
         for(let i = s; i < m; i++) {
             sum += dp[i];
-            output += `At least ${i - s + 1} new prize(s): ${printPercentage(1 - sum)}<br>`;
+            output += t("At least {0} new prize(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
         }
         document.getElementById('output-custom-success').innerHTML = `<p>${output}</p>`;
     } else {
         let result = 1 - dp[0];
-        document.getElementById('output-custom-success').textContent = `Probability of success: ${printPercentage(result)}`;
+        document.getElementById('output-custom-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
     }
 }
 
@@ -208,14 +201,14 @@ function calculateLuckScore(pool, p) {
     console.log(result);
     var rating;
     // 68-95-99.7
-    if(result <= 0.0015) rating = 'Extreme Unlucky';
-    if(result > 0.0015 && result <= 0.025) rating = 'Very Unlucky';
-    if(result > 0.025 && result <= 0.16) rating = 'Unlucky';
-    if(result > 0.16 && result < 0.84) rating = 'Average';
-    if(result >= 0.84 && result < 0.975) rating = 'Lucky';
-    if(result >= 0.975 && result < 0.9985) rating = 'Very Lucky';
-    if(result >= 0.9985) rating = 'Extreme Lucky';
-    document.getElementById(`output-${pool}-score`).textContent = `Luck Score: ${(result * 100).toFixed(1)} (${rating})`;
+    if(result <= 0.0015) rating = t('Extreme Unlucky');
+    if(result > 0.0015 && result <= 0.025) rating = t('Very Unlucky');
+    if(result > 0.025 && result <= 0.16) rating = t('Unlucky');
+    if(result > 0.16 && result < 0.84) rating = t('Average');
+    if(result >= 0.84 && result < 0.975) rating = t('Lucky');
+    if(result >= 0.975 && result < 0.9985) rating = t('Very Lucky');
+    if(result >= 0.9985) rating = t('Extreme Lucky');
+    document.getElementById(`output-${pool}-score`).textContent = t("Luck Score: {0} ({1})", {0: (result * 100).toFixed(1), 1: rating});
 }
 
 function getDefaultConfig() {
@@ -259,18 +252,41 @@ function validateInput(num, min, max, id) {
     }
     input.classList.add('invalid');
     error.classList.add('visible');
-    error.textContent = `Please enter a number between ${min} and ${max}.`;
+    error.textContent = t("Please enter a number between {0} and {1}.", {0: min, 1: max});
     return false;
 }
 
 function createLuckScoreExplanation(pool) {
+    if(languageManager && languageManager.currentLanguage == 'zh-TW') return `
+        <button class="explanation-toggle" onclick="toggleExplanation('${pool}')">
+            <span id="${pool}-score-explanation-arrow">▶</span> 什麼是幸運分數?
+        </button>
+        <div id="${pool}-score-explanation" class="explanation-content">
+            <p>幸運分數表示你的尋覓結果與統計預期相比是偏幸運還是不幸運。
+            詳情可參考 <a href="https://zh.wikipedia.org/wiki/%E7%B4%AF%E7%A7%AF%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" target="_blank" rel="noopener noreferrer">累積分布函數 (CDF)</a>。</p>
+            <ul>
+                <li><strong>0-0.15:</strong> 非洲酋長 - 你位於玩家底部 0.15%</li>
+                <li><strong>0.15-2.5:</strong> 大非洲人 - 顯著低於平均</li>
+                <li><strong>2.5-16:</strong> 非洲人 - 低於平均但不罕見</li>
+                <li><strong>16-84:</strong> 普通人 - 正常範圍</li>
+                <li><strong>84-97.5:</strong> 歐洲人 - 高於平均</li>
+                <li><strong>97.5-99.85:</strong> 大歐洲人 - 顯著高於平均</li>
+                <li><strong>99.85-100:</strong> 歐洲教皇 - 你位於玩家頂端 0.15%</li>
+            </ul>
+            <p>
+                舉例來說，幸運分數為 25 表示有 25% 的玩家獲得的雀士數量與你相同或更少，而其餘的 75% 會獲得更多雀士。<br>
+                <strong>註:</strong> 尋覓次數較少 (少於30次) 時，幸運分數可能不準確。
+            </p>
+        </div>
+    `;
+    
     return `
         <button class="explanation-toggle" onclick="toggleExplanation('${pool}')">
             <span id="${pool}-score-explanation-arrow">▶</span> What is Luck Score?
         </button>
         <div id="${pool}-score-explanation" class="explanation-content">
             <p>The Luck Score represents how lucky or unlucky your summon results are compared to what would be expected statistically.
-            See <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function" target="_blank" rel="noopener noreferrer">Cumulative distribution function (CDF)</a></p>
+            See <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function" target="_blank" rel="noopener noreferrer">Cumulative distribution function (CDF)</a>.</p>
             <ul>
                 <li><strong>0-0.15:</strong> Extreme unlucky - You're in the bottom 0.15% of players</li>
                 <li><strong>0.15-2.5:</strong> Very unlucky - Significantly below average</li>
@@ -280,7 +296,10 @@ function createLuckScoreExplanation(pool) {
                 <li><strong>97.5-99.85:</strong> Very Lucky - Significantly above average</li>
                 <li><strong>99.85-100:</strong> Extreme Lucky - You're in the top 0.15% of players</li>
             </ul>
-            <p>For example, a luck score of 25 means that 25% of players would get the same or fewer characters than you, while 75% would get more.</p>
+            <p>
+                For example, a Luck Score of 25 means that 25% of players would get the same or fewer characters than you, while 75% would get more.<br>
+                <strong>Note:</strong> Luck Score may be inaccurate if the number of summons is low (less than 30).
+            </p>
         </div>
     `;
 }
