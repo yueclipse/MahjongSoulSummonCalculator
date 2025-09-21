@@ -200,14 +200,13 @@ function calculateLuckScore(pool, p) {
     let result = calculateCumulativeDistribution(n, p, k);
     console.log(result);
     var rating;
-    // 68-95-99.7
-    if(result <= 0.0015) rating = t('Extreme Unlucky');
-    if(result > 0.0015 && result <= 0.025) rating = t('Very Unlucky');
-    if(result > 0.025 && result <= 0.16) rating = t('Unlucky');
-    if(result > 0.16 && result < 0.84) rating = t('Average');
-    if(result >= 0.84 && result < 0.975) rating = t('Lucky');
-    if(result >= 0.975 && result < 0.9985) rating = t('Very Lucky');
-    if(result >= 0.9985) rating = t('Extreme Lucky');
+    if(result <= 0.01) rating = t('Extreme Unlucky');
+    if(result > 0.01 && result <= 0.05) rating = t('Very Unlucky');
+    if(result > 0.05 && result <= 0.2) rating = t('Unlucky');
+    if(result > 0.2 && result < 0.8) rating = t('Average');
+    if(result >= 0.8 && result < 0.95) rating = t('Lucky');
+    if(result >= 0.95 && result < 0.99) rating = t('Very Lucky');
+    if(result >= 0.99) rating = t('Extreme Lucky');
     document.getElementById(`output-${pool}-score`).textContent = t("Luck Score: {0} ({1})", {0: (result * 100).toFixed(1), 1: rating});
 }
 
@@ -263,19 +262,20 @@ function createLuckScoreExplanation(pool) {
         </button>
         <div id="${pool}-score-explanation" class="explanation-content">
             <p>幸運分數表示你的尋覓結果與統計預期相比是偏幸運還是不幸運。
-            詳情可參考 <a href="https://zh.wikipedia.org/wiki/%E7%B4%AF%E7%A7%AF%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" target="_blank" rel="noopener noreferrer">累積分布函數 (CDF)</a>。</p>
+            詳情可參考 <a href="https://zh.wikipedia.org/wiki/%E7%B4%AF%E7%A7%AF%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" target="_blank" rel="noopener noreferrer">累積分布函數 (CDF)</a> 。
+            </p>
+            <p>綜合統計上的 <a href="https://zh.wikipedia.org/wiki/P%E5%80%BC" target="_blank" rel="noopener noreferrer">p值</a> 標準，還有我們日常對「幸運」的直覺，這裡提供一些建議的分界點：</p>
             <ul>
-                <li><strong>0-0.15:</strong> 非洲酋長 - 你位於玩家底部 0.15%</li>
-                <li><strong>0.15-2.5:</strong> 大非洲人 - 顯著低於平均</li>
-                <li><strong>2.5-16:</strong> 非洲人 - 低於平均但不罕見</li>
-                <li><strong>16-84:</strong> 普通人 - 正常範圍</li>
-                <li><strong>84-97.5:</strong> 歐洲人 - 高於平均</li>
-                <li><strong>97.5-99.85:</strong> 大歐洲人 - 顯著高於平均</li>
-                <li><strong>99.85-100:</strong> 歐洲教皇 - 你位於玩家頂端 0.15%</li>
+                <li><strong>0-1:</strong> 非洲酋長 - 你位於玩家底部 1%</li>
+                <li><strong>1-5:</strong> 大非洲人 - 顯著低於平均</li>
+                <li><strong>5-20:</strong> 非洲人 - 低於平均但不罕見</li>
+                <li><strong>20-80:</strong> 普通人 - 正常範圍</li>
+                <li><strong>80-95:</strong> 歐洲人 - 高於平均</li>
+                <li><strong>95-99:</strong> 大歐洲人 - 顯著高於平均</li>
+                <li><strong>99-100:</strong> 歐洲教皇 - 你位於玩家頂端 1%</li>
             </ul>
             <p>
                 舉例來說，幸運分數為 25 表示有 25% 的玩家獲得的雀士數量與你相同或更少，而其餘的 75% 會獲得更多雀士。<br>
-                <strong>註:</strong> 尋覓次數較少 (少於30次) 時，幸運分數可能不準確。
             </p>
         </div>
     `;
@@ -287,18 +287,18 @@ function createLuckScoreExplanation(pool) {
         <div id="${pool}-score-explanation" class="explanation-content">
             <p>The Luck Score represents how lucky or unlucky your summon results are compared to what would be expected statistically.
             See <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function" target="_blank" rel="noopener noreferrer">Cumulative distribution function (CDF)</a>.</p>
+            <p>Based on both statistical <a href="https://en.wikipedia.org/wiki/P-value" target="_blank" rel="noopener noreferrer">p-values</a> and our everyday sense of what feels lucky, here are the suggested cutoffs:</p>
             <ul>
-                <li><strong>0-0.15:</strong> Extreme unlucky - You're in the bottom 0.15% of players</li>
-                <li><strong>0.15-2.5:</strong> Very unlucky - Significantly below average</li>
-                <li><strong>2.5-16:</strong> Unlucky - Below average but not rare</li>
-                <li><strong>16-84:</strong> Average - Normal expected range</li>
-                <li><strong>84-97.5:</strong> Lucky - Above average</li>
-                <li><strong>97.5-99.85:</strong> Very Lucky - Significantly above average</li>
-                <li><strong>99.85-100:</strong> Extreme Lucky - You're in the top 0.15% of players</li>
+                <li><strong>0-1:</strong> Extreme Unlucky - You're in the bottom 1% of players</li>
+                <li><strong>1-5:</strong> Very Unlucky - Significantly below average</li>
+                <li><strong>5-20:</strong> Unlucky - Below average but not rare</li>
+                <li><strong>20-80:</strong> Average - Normal expected range</li>
+                <li><strong>80-95:</strong> Lucky - Above average</li>
+                <li><strong>95-99:</strong> Very Lucky - Significantly above average</li>
+                <li><strong>99-100:</strong> Extreme Lucky - You're in the top 1% of players</li>
             </ul>
             <p>
                 For example, a Luck Score of 25 means that 25% of players would get the same or fewer characters than you, while 75% would get more.<br>
-                <strong>Note:</strong> Luck Score may be inaccurate if the number of summons is low (less than 30).
             </p>
         </div>
     `;
