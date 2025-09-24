@@ -1,15 +1,15 @@
 {
 	"pools": {
 		"event": {
-			"probability": 0,
-			"maxCharacters": 1,
+			"probability": 0.0295,
+			"maxCharacters": 2,
 			"buttonTitle": {
-				"en": "Current Event",
-				"zh-TW": "進行中活動"
+				"en": "Current Event 9/23 - 10/1",
+				"zh-TW": "進行中活動 9/24 - 10/2"
 			},
 			"title": {
-				"en": "Event Pool",
-				"zh-TW": "活動池"
+				"en": "Sakura Bloom: 2.95% chance to get \"Yui Yagi\" or \"Yuan Xiao\".",
+				"zh-TW": "櫻花爛漫：2.95% 機率獲得「八木唯」或「元宵」。"
 			}
 		},
 		"limited": {
