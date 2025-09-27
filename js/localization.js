@@ -39,14 +39,11 @@ class LanguageManager {
 
 		document.title = this.translate('Mahjong Soul Summon Calculator');
 
-		// setup luck score explanation
-	    const pools = ['event', 'limited', 'collab', 'doubleup', 'singleup', 'normal', 'custom'];
-
 		pools.forEach(pool => {
 		    document.getElementById(`${pool}-score-explanation-section`).innerHTML = createLuckScoreExplanation(pool);
 		});
 
-		// setup event text
+		// Setup event text
         document.getElementById('event-btn').textContent = config.pools.event.buttonTitle[languageManager.currentLanguage];
         document.getElementById('event-title').textContent = config.pools.event.title[languageManager.currentLanguage];
 	}

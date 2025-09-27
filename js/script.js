@@ -1,4 +1,6 @@
+const pools = ['event', 'limited', 'collab', 'doubleup', 'singleup', 'normal', 'custom'];
 let config = null;
+let bExplanationExpanded = false;
 
 document.addEventListener('DOMContentLoaded', async function() {
     // Load config.json
@@ -30,25 +32,17 @@ document.addEventListener('DOMContentLoaded', async function() {
         document.getElementById('limited-content').classList.add('active');
     }
 
-    // Set up button listener
-    const buttons = {
-        'event-btn': 'event-content',
-        'limited-btn': 'limited-content',
-        'collab-btn': 'collab-content',
-        'doubleup-btn': 'doubleup-content',
-        'singleup-btn': 'singleup-content',
-        'normal-btn': 'normal-content',
-        'custom-btn': 'custom-content'
-    };
-
-    Object.entries(buttons).forEach(([btnId, contentId]) => {
-        document.getElementById(btnId).addEventListener('click', () => {
+    // Setup button listener
+    pools.forEach(pool => {
+        document.getElementById(`${pool}-btn`).addEventListener('click', () => {
             // Hide all contents
             document.querySelectorAll('.content').forEach(content => {
                 content.classList.remove('active');
             });
             // Show selected content
-            document.getElementById(contentId).classList.add('active');
+            document.getElementById(`${pool}-content`).classList.add('active');
+            
+            SetupExplanation(`${pool}`);
         });
     });
 });
@@ -309,10 +303,15 @@ function createLuckScoreExplanation(pool) {
 }
 
 function toggleExplanation(pool) {
+    bExplanationExpanded = !bExplanationExpanded;
+    SetupExplanation(pool);
+}
+
+function SetupExplanation(pool) {
     const explanation = document.getElementById(`${pool}-score-explanation`);
     const arrow = document.getElementById(`${pool}-score-explanation-arrow`);
     
-    if (explanation.classList.contains('visible')) {
+    if (!bExplanationExpanded) {
         explanation.classList.remove('visible');
         arrow.textContent = '▶';
     } else {
