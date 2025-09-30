@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         document.getElementById('limited-content').classList.add('active');
     }
 
+    // Setup character portraits
+    pools.forEach(pool => {
+        SetupCharacterDisplay(pool);
+    });
+
     // Setup button listener
     pools.forEach(pool => {
         document.getElementById(`${pool}-btn`).addEventListener('click', () => {
@@ -317,5 +322,29 @@ function SetupExplanation(pool) {
     } else {
         explanation.classList.add('visible');
         arrow.textContent = '▼';
+    }
+}
+
+function SetupCharacterDisplay(pool) {
+    if(config.pools[pool] && config.pools[pool].characterImages) {
+        // Portrait
+        const characterDisplay = document.getElementById(`${pool}-character-display`);
+        characterDisplay.innerHTML = '';
+        config.pools[pool].characterImages.forEach(filename => {
+            const img = document.createElement('img');
+            img.src = filename;
+            img.loading = 'lazy';
+            img.alt = "";
+            img.className = 'character-portrait';
+            characterDisplay.appendChild(img);
+        });
+        // Description
+        const description = document.createElement('div');
+        description.className = 'character-description';
+        if(config.pools[pool].characterDescription) {
+            description.innerHTML = languageManager ? config.pools[pool].characterDescription[languageManager.currentLanguage] : config.pools[pool].characterDescription['en'];
+            if(description.textContent.length > 0)
+                characterDisplay.appendChild(description);
+        }
     }
 }

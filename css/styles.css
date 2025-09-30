@@ -98,6 +98,46 @@ input {
 .pool-section h3 {
     margin-top: 0;
 }
+.character-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 25px;
+    padding: 10px;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+.character-portrait {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.character-description {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6c757d;
+    font-style: italic;
+    text-align: center;
+}
+.character-description a {
+    color: #6c757d;
+}
+.character-description a:hover {
+    color: #007bff;
+}
+@media (max-width: 600px) {
+    .character-portrait {
+        width: 80px;
+        height: 80px;
+    }
+
+    .character-description {
+        font-size: 10px;
+    }
+}
 .calc-group {
     margin-bottom: 20px;
 }
