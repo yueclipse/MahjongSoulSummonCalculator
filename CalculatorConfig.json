@@ -4,33 +4,78 @@
 			"probability": 0.0295,
 			"maxCharacters": 2,
 			"buttonTitle": {
-				"en": "Current Event 9/23 - 10/1",
-				"zh-TW": "進行中活動 9/24 - 10/2"
+				"en": "Current Event 10/1 - 10/9",
+				"zh-TW": "進行中活動 10/2 - 10/10"
 			},
 			"title": {
-				"en": "Sakura Bloom: 2.95% chance to get \"Yui Yagi\" or \"Yuan Xiao\".",
-				"zh-TW": "櫻花爛漫：2.95% 機率獲得「八木唯」或「元宵」。"
-			}
+				"en": "Sakura Bloom: 2.95% chance to get \"Fu ji\" or \"Kaavi\".",
+				"zh-TW": "櫻花爛漫：2.95% 機率獲得「福姬」或「卡維」。"
+			},
+			"characterImages": [
+				"images/Fuji.png",
+				"images/Kaavi.png"
+			]
 		},
 		"limited": {
 			"probability": 0.01,
-			"maxCharacters": 1
+			"maxCharacters": 1,
+			"characterImages": [
+				"images/LiYang.png"
+			],
+			"characterDescription": {
+				"en": "Li Yang - the previous limited character 08.19.2025",
+				"zh-TW": "璃央 - 上一次的限定雀士 08.20.2025"
+			}
 		},
 		"collab": {
 			"probability": 0.0295,
-			"maxCharacters": 4
+			"maxCharacters": 4,
+			"characterImages": [
+				"images/SakuraMatou.png",	
+				"images/Saber.png",
+				"images/RinTohsaka.png",
+				"images/Archer.png"
+			],
+			"characterDescription": {
+				"en": "Sakura Matou & Saber & Rin Tohsaka & Archer - the previous collaborate characters 04.22.2025",
+				"zh-TW": "間桐櫻、Saber、遠坂凜、Archer - 上一次的聯動雀士 04.23.2025"
+			}
 		},
 		"doubleup": {
 			"probability": 0.0295,
-			"maxCharacters": 2
+			"maxCharacters": 2,
+			"characterImages": [
+				"images/YuiYagi.png",
+				"images/YuanXiao.png"	
+			],
+			"characterDescription": {
+				"en": "Yui Yagi & Yuan Xiao - characters in the previous double rate-up 09.23.2025",
+				"zh-TW": "八木唯、元宵 - 上一次的雙UP雀士 09.24.2025"
+			}
 		},
 		"singleup": {
 			"probability": 0.0295,
-			"maxCharacters": 1
+			"maxCharacters": 1,
+			"characterImages": [
+				"images/Jane.png"
+			],
+			"characterDescription": {
+				"en": "Jane - the previous new permanent character 06.24.2025",
+				"zh-TW": "簡 - 上一次的新常駐雀士 06.25.2025"
+			}
 		},
 		"normal": {
 			"probability": 0.05,
-			"maxCharacters": 1
+			"maxCharacters": 1,
+			"characterImages": [
+				"images/LiYang.png",
+				"images/YuiYagi.png",
+				"images/RinTohsaka.png"	
+			],
+			"characterDescription": {
+				"en": "Li Yang & Yui Yagi & Rin Tohsaka<br>The top 3 most used characters recently (excluding Ichihime & Miki) according to <a href=\"https://x.com/Jantama_rank\" target=\"_blank\" rel=\"noopener noreferrer\">雀魂rank(@Jantama_rank)</a>",
+				"zh-TW": "璃央、八木唯、遠坂凜 - 近期最多人使用的雀士前三名 (一姬、二階堂除外) 來源: <a href=\"https://x.com/Jantama_rank\" target=\"_blank\" rel=\"noopener noreferrer\">雀魂rank(@Jantama_rank)</a>"
+			}
 		}
 	},
 	"settings": {
