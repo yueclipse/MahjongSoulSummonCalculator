@@ -260,9 +260,9 @@ function createLuckScoreExplanation(pool) {
         </button>
         <div id="${pool}-score-explanation" class="explanation-content">
             <p>幸運分數表示你的尋覓結果與統計預期相比是偏幸運還是不幸運。
-            詳情可參考 <a href="https://zh.wikipedia.org/wiki/%E7%B4%AF%E7%A7%AF%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" target="_blank" rel="noopener noreferrer">累積分布函數 (CDF)</a> 。
+            詳情可參考 <a href="https://zh.wikipedia.org/zh-tw/%E7%B4%AF%E7%A7%AF%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" target="_blank" rel="noopener noreferrer">累積分布函數 (CDF)</a> 。
             </p>
-            <p>綜合統計上的 <a href="https://zh.wikipedia.org/wiki/P%E5%80%BC" target="_blank" rel="noopener noreferrer">p值</a> 標準，還有我們日常對「幸運」的直覺，這裡提供一些建議的分界點：</p>
+            <p>綜合統計上的 <a href="https://zh.wikipedia.org/zh-tw/P%E5%80%BC" target="_blank" rel="noopener noreferrer">p值</a> 標準，還有我們日常對「幸運」的直覺，這裡提供一些建議的分界點：</p>
             <ul>
                 <li><strong>0-1:</strong> 非洲酋長 - 你位於玩家底部 1%</li>
                 <li><strong>1-5:</strong> 大非洲人 - 顯著低於平均</li>
