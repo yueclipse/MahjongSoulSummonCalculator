@@ -4,17 +4,21 @@
 			"probability": 0.0295,
 			"maxCharacters": 2,
 			"buttonTitle": {
-				"en": "Current Event 10/1 - 10/9",
+				"en": "Ongoing Event 10/1 - 10/9",
 				"zh-TW": "進行中活動 10/2 - 10/10"
 			},
 			"title": {
-				"en": "Sakura Bloom: 2.95% chance to get \"Fu ji\" or \"Kaavi\".",
-				"zh-TW": "櫻花爛漫：2.95% 機率獲得「福姬」或「卡維」。"
+				"en": "Sakura Bloom: 2.95% chance to get any one of the following characters.",
+				"zh-TW": "櫻花爛漫：2.95% 機率獲得以下雀士任一位。"
 			},
 			"characterImages": [
 				"images/Fuji.png",
 				"images/Kaavi.png"
-			]
+			],
+			"characterDescription": {
+				"en": "Fu Ji & Kaavi",
+				"zh-TW": "福姬、卡維"
+			}
 		},
 		"limited": {
 			"probability": 0.01,
