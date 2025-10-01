@@ -74,11 +74,11 @@
 			"characterImages": [
 				"images/LiYang.png",
 				"images/YuiYagi.png",
-				"images/RinTohsaka.png"	
+				"images/YuanXiao.png"	
 			],
 			"characterDescription": {
-				"en": "Li Yang & Yui Yagi & Rin Tohsaka<br>The top 3 most used characters recently (excluding Ichihime & Miki) according to <a href=\"https://x.com/Jantama_rank\" target=\"_blank\" rel=\"noopener noreferrer\">雀魂rank(@Jantama_rank)</a>",
-				"zh-TW": "璃央、八木唯、遠坂凜 - 近期最多人使用的雀士前三名 (一姬、二階堂除外) 來源: <a href=\"https://x.com/Jantama_rank\" target=\"_blank\" rel=\"noopener noreferrer\">雀魂rank(@Jantama_rank)</a>"
+				"en": "Li Yang & Yui Yagi & Yuan Xiao<br>The top 3 most used characters recently (excluding Ichihime & Miki) according to <a href=\"https://x.com/Jantama_rank\" target=\"_blank\" rel=\"noopener noreferrer\">雀魂rank(@Jantama_rank)</a>",
+				"zh-TW": "璃央、八木唯、元宵 - 近期最多人使用的雀士前三名 (一姬、二階堂除外) 來源: <a href=\"https://x.com/Jantama_rank\" target=\"_blank\" rel=\"noopener noreferrer\">雀魂rank(@Jantama_rank)</a>"
 			}
 		}
 	},
