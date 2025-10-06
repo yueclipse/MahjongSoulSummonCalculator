@@ -39,6 +39,7 @@ class LanguageManager {
 
 		document.title = this.translate('Mahjong Soul Summon Calculator');
 
+		bExplanationExpanded = false;
 		pools.forEach(pool => {
 			SetupCharacterDisplay(pool);
 		    document.getElementById(`${pool}-score-explanation-section`).innerHTML = createLuckScoreExplanation(pool);
