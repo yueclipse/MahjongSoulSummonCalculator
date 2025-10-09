@@ -1,7 +1,7 @@
 {
 	"pools": {
 		"event": {
-			"probability": 0.0295,
+			"probability": 0,
 			"maxCharacters": 2,
 			"buttonTitle": {
 				"en": "Ongoing Event 10/1 - 10/9",
@@ -49,12 +49,12 @@
 			"probability": 0.0295,
 			"maxCharacters": 2,
 			"characterImages": [
-				"images/YuiYagi.png",
-				"images/YuanXiao.png"	
+				"images/FuJi.png",
+				"images/Kaavi.png"	
 			],
 			"characterDescription": {
-				"en": "Yui Yagi & Yuan Xiao - characters in the previous double rate-up 09.23.2025",
-				"zh-TW": "八木唯、元宵 - 上一次的雙UP雀士 09.24.2025"
+				"en": "Fu Ji & Kaavi - characters in the previous double rate-up 10.01.2025",
+				"zh-TW": "福姬、卡維 - 上一次的雙UP雀士 10.02.2025"
 			}
 		},
 		"singleup": {
