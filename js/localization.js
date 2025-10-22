@@ -54,13 +54,8 @@ class LanguageManager {
 let languageManager = null;
 
 async function initLocalization() {
-    try {
-        const response = await fetch('i18n/zh-TW.json');
-        languageManager = new LanguageManager(await response.json());
-        languageManager.updatePage();
-    } catch(error) {
-        console.log('Fail to load zh-TW.json and initialize LanguageManager');
-    }
+	languageManager = await fetchLocalization();
+	if(languageManager) languageManager.updatePage();
 
 	document.getElementById('language-selector').addEventListener('change', function() {
 		if(languageManager) languageManager.setLanguage(this.value);

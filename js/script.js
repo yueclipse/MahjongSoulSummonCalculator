@@ -4,13 +4,7 @@ let bExplanationExpanded = false;
 
 document.addEventListener('DOMContentLoaded', async function() {
     // Load config.json
-    try {
-        const response = await fetch('CalculatorConfig.json');
-        config = await response.json();
-    } catch(error) {
-        console.log('Fail to load CalculatorConfig.json');
-        config = getDefaultConfig();
-    }
+    config = await fetchConfig();
 
     await initLocalization();
 
@@ -211,37 +205,6 @@ function calculateLuckScore(pool, p) {
     if(result >= 0.95 && result < 0.99) rating = t('Very Lucky');
     if(result >= 0.99) rating = t('Extreme Lucky');
     document.getElementById(`output-${pool}-score`).textContent = t("Luck Score: {0} ({1})", {0: (result * 100).toFixed(1), 1: rating});
-}
-
-function getDefaultConfig() {
-    return {
-        "pools": {
-            "event": {
-                "probability": 0.0,
-                "maxCharacters": 0
-            },
-            "limited": {
-                "probability": 0.01,
-                "maxCharacters": 1
-            },
-            "collab": {
-                "probability": 0.0295,
-                "maxCharacters": 4
-            },
-            "doubleup": {
-                "probability": 0.0295,
-                "maxCharacters": 2
-            },
-            "singleup": {
-                "probability": 0.0295,
-                "maxCharacters": 1
-            },
-            "normal": {
-                "probability": 0.05,
-                "maxCharacters": 1
-            }
-        }
-    }
 }
 
 function validateInput(num, min, max, id) {
