@@ -1,23 +1,25 @@
 {
 	"pools": {
 		"event": {
-			"probability": 0,
-			"maxCharacters": 2,
+			"probability": 0.0295,
+			"maxCharacters": 4,
 			"buttonTitle": {
-				"en": "Ongoing Event 10/1 - 10/9",
-				"zh-TW": "進行中活動 10/2 - 10/10"
+				"en": "Ongoing Event 10/21 - 11/11",
+				"zh-TW": "進行中活動 10/22 - 11/12"
 			},
 			"title": {
-				"en": "Sakura Bloom: 2.95% chance to get \"Fu Ji\" or \"Kaavi\"",
-				"zh-TW": "櫻花爛漫：2.95% 機率獲得「福姬」或「卡維」。"
+				"en": "Sakura Special Collab: 2.95% chance to get one of following Jyanshis: Gintoki Sakata, Kotaro Katsura, Tatsuma Sakamoto, Shinsuke Takasugi.",
+				"zh-TW": "櫻花-特別聯動：2.95% 機率獲得任一以下雀士: 坂田銀時、桂小太郎、坂本辰馬、高杉晉助。"
 			},
 			"characterImages": [
-				"images/FuJi.png",
-				"images/Kaavi.png"
+				"images/GintokiSakata.png",
+				"",
+				"images/TatsumaSakamoto.png",
+				"images/ShinsukeTakasugi.png"
 			],
 			"characterDescription": {
-				"en": "Fu Ji & Kaavi",
-				"zh-TW": "福姬、卡維"
+				"en": "Gintoki Sakata & Kotaro Katsura & Tatsuma Sakamot & Shinsuke Takasugi - Gintama",
+				"zh-TW": "坂田銀時、桂小太郎、坂本辰馬、高杉晉助 - 銀魂"
 			}
 		},
 		"limited": {
