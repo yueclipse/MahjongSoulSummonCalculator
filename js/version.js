@@ -1,5 +1,5 @@
-const CONFIG_VERSION = '1.0.0';
-const TRANSLATION_VERSION = '1.0.0';
+const CONFIG_VERSION = '1.0.1';
+const TRANSLATION_VERSION = '1.0.1';
 
 async function fetchConfig() {
     try {

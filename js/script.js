@@ -109,7 +109,7 @@ function calculateCollabSuccessProbability() {
     let sum = 0;
     for(let i = s; i < config.pools.collab.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
-        output += t("At least {0} new collaborate Jyanshi(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
+        output += t("At least {0} new collaboration Jyanshi(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
     }
     document.getElementById('output-collab-success').innerHTML = `<p>${output}</p>`;
 }
