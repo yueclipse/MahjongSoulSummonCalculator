@@ -8,12 +8,12 @@
 				"zh-TW": "進行中活動 10/22 - 11/12"
 			},
 			"title": {
-				"en": "Sakura Special Collab: 2.95% chance to get one of following Jyanshis: Gintoki Sakata, Kotaro Katsura, Tatsuma Sakamoto, Shinsuke Takasugi.",
-				"zh-TW": "櫻花-特別聯動：2.95% 機率獲得任一以下雀士: 坂田銀時、桂小太郎、坂本辰馬、高杉晉助。"
+				"en": "Sakura Special Collab: 2.95% chance to get any one of the collab Jyanshis.",
+				"zh-TW": "櫻花-特別聯動：2.95% 機率獲得任一聯動雀士。"
 			},
 			"characterImages": [
 				"images/GintokiSakata.png",
-				"",
+				"images/KotaroKatsura.png",
 				"images/TatsumaSakamoto.png",
 				"images/ShinsukeTakasugi.png"
 			],
