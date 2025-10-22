@@ -88,7 +88,7 @@ function calculateEventSuccessProbability() {
         let sum = 0;
         for(let i = s; i < config.pools.event.maxCharacters && i - s + 1 <= n; i++) {
             sum += dp[i];
-            output += t("At least {0} new event character(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
+            output += t("At least {0} new event Jyanshi(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
         }
         document.getElementById('output-event-success').innerHTML = `<p>${output}</p>`;
     } else {
@@ -115,7 +115,7 @@ function calculateCollabSuccessProbability() {
     let sum = 0;
     for(let i = s; i < config.pools.collab.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
-        output += t("At least {0} new collaborate character(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
+        output += t("At least {0} new collaborate Jyanshi(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
     }
     document.getElementById('output-collab-success').innerHTML = `<p>${output}</p>`;
 }
@@ -130,7 +130,7 @@ function calculateDoubleUpSuccessProbability() {
     let sum = 0;
     for(let i = s; i < config.pools.doubleup.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
-        output += t("At least {0} new rate-up character(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
+        output += t("At least {0} new rate-up Jyanshi(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
     }
     document.getElementById('output-doubleup-success').innerHTML = `<p>${output}</p>`;
 }
@@ -301,7 +301,7 @@ function createLuckScoreExplanation(pool) {
                 <li><strong>99-100:</strong> Extreme Lucky - You're in the top 1% of players</li>
             </ul>
             <p>
-                For example, a Luck Score of 25 means that 25% of players would get the same or fewer characters than you, while 75% would get more.<br>
+                For example, a Luck Score of 25 means that 25% of players would get the same or fewer Jyanshis than you, while 75% would get more.<br>
             </p>
         </div>
     `;

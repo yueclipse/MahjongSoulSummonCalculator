@@ -42,7 +42,7 @@
                 <label for="n-event" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-event">
                 <span id="n-event-error" class="error-text"></span>
-                <label for="s-event" id="s-event-label" data-translate="Number of distinct event characters already summoned">Number of distinct event characters already summoned</label>
+                <label for="s-event" id="s-event-label" data-translate="Number of distinct event Jyanshis already summoned">Number of distinct event Jyanshis already summoned</label>
                 <input type="number" id="s-event">
                 <span id="s-event-error" class="error-text"></span>
                 <button onclick="calculateEventSuccessProbability()" data-translate="Calculate">Calculate</button>
@@ -53,7 +53,7 @@
                 <label for="n-event-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-event-score">
                 <span id="n-event-score-error" class="error-text"></span>
-                <label for="k-event-score" data-translate="Number of event characters summoned (including duplicates)">Number of event characters summoned (including duplicates)</label>
+                <label for="k-event-score" data-translate="Number of event Jyanshis summoned (including duplicates)">Number of event Jyanshis summoned (including duplicates)</label>
                 <input type="number" id="k-event-score">
                 <span id="k-event-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('event', config.pools.event.probability)" data-translate="Calculate">Calculate</button>
@@ -66,7 +66,7 @@
 
     <div id="limited-content" class="content">
         <div class="pool-section">
-            <h3 data-translate="Limited Pool: 1% chance to get the limited character.">Limited Pool: 1% chance to get the limited character.</h3>
+            <h3 data-translate="Limited Pool: 1% chance to get the limited Jyanshi.">Limited Pool: 1% chance to get the limited Jyanshi.</h3>
             
             <div id="limited-character-display" class="character-display"></div>
 
@@ -82,7 +82,7 @@
                 <label for="n-limited-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-limited-score">
                 <span id="n-limited-score-error" class="error-text"></span>
-                <label for="k-limited-score" data-translate="Number of limited characters summoned">Number of limited characters summoned</label>
+                <label for="k-limited-score" data-translate="Number of limited Jyanshis summoned">Number of limited Jyanshis summoned</label>
                 <input type="number" id="k-limited-score">
                 <span id="k-limited-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('limited', config.pools.limited.probability)" data-translate="Calculate">Calculate</button>
@@ -95,7 +95,7 @@
 
     <div id="collab-content" class="content">
         <div class="pool-section">
-            <h3 data-translate="Collaborate Pool: 2.95% chance to get any one of four collaborate characters.">Collaborate Pool: 2.95% chance to get any one of four collaborate characters.</h3>
+            <h3 data-translate="Collaborate Pool: 2.95% chance to get any one of four collaborate Jyanshis.">Collaborate Pool: 2.95% chance to get any one of four collaborate Jyanshis.</h3>
             
             <div id="collab-character-display" class="character-display"></div>
 
@@ -103,7 +103,7 @@
                 <label for="n-collab" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-collab">
                 <span id="n-collab-error" class="error-text"></span>
-                <label for="s-collab" data-translate="Number of distinct collaborate characters already summoned">Number of distinct collaborate characters already summoned</label>
+                <label for="s-collab" data-translate="Number of distinct collaborate Jyanshis already summoned">Number of distinct collaborate Jyanshis already summoned</label>
                 <input type="number" id="s-collab">
                 <span id="s-collab-error" class="error-text"></span>
                 <button onclick="calculateCollabSuccessProbability()" data-translate="Calculate">Calculate</button>
@@ -114,7 +114,7 @@
                 <label for="n-collab-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-collab-score">
                 <span id="n-collab-score-error" class="error-text"></span>
-                <label for="k-collab-score" data-translate="Number of collaborate characters summoned (including duplicates)">Number of collaborate characters summoned (including duplicates)</label>
+                <label for="k-collab-score" data-translate="Number of collaborate Jyanshis summoned (including duplicates)">Number of collaborate Jyanshis summoned (including duplicates)</label>
                 <input type="number" id="k-collab-score">
                 <span id="k-collab-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('collab', config.pools.collab.probability)" data-translate="Calculate">Calculate</button>
@@ -127,7 +127,7 @@
 
     <div id="doubleup-content" class="content">
         <div class="pool-section">
-            <h3 data-translate="Double Rate-Up Pool: 2.95% chance to get any one of two rate-up characters.">Double Rate-Up Pool: 2.95% chance to get any one of two rate-up characters.</h3>
+            <h3 data-translate="Double Rate-Up Pool: 2.95% chance to get any one of two rate-up Jyanshis.">Double Rate-Up Pool: 2.95% chance to get any one of two rate-up Jyanshis.</h3>
             
             <div id="doubleup-character-display" class="character-display"></div>
 
@@ -135,7 +135,7 @@
                 <label for="n-doubleup" data-translate="Expected number of summons">Expected number of summons</label>
                 <input type="number" id="n-doubleup">
                 <span id="n-doubleup-error" class="error-text"></span>
-                <label for="s-doubleup" data-translate="Number of distinct rate-up characters already summoned">Number of distinct rate-up characters already summoned</label>
+                <label for="s-doubleup" data-translate="Number of distinct rate-up Jyanshis already summoned">Number of distinct rate-up Jyanshis already summoned</label>
                 <input type="number" id="s-doubleup">
                 <span id="s-doubleup-error" class="error-text"></span>
                 <button onclick="calculateDoubleUpSuccessProbability()" data-translate="Calculate">Calculate</button>
@@ -146,7 +146,7 @@
                 <label for="n-doubleup-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-doubleup-score">
                 <span id="n-doubleup-score-error" class="error-text"></span>
-                <label for="k-doubleup-score" data-translate="Number of rate-up characters summoned (including duplicates)">Number of rate-up characters summoned (including duplicates)</label>
+                <label for="k-doubleup-score" data-translate="Number of rate-up Jyanshis summoned (including duplicates)">Number of rate-up Jyanshis summoned (including duplicates)</label>
                 <input type="number" id="k-doubleup-score">
                 <span id="k-doubleup-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('doubleup', config.pools.doubleup.probability)" data-translate="Calculate">Calculate</button>
@@ -159,7 +159,7 @@
 
     <div id="singleup-content" class="content">
         <div class="pool-section">
-            <h3 data-translate="Single Rate-Up Pool: 2.95% chance to get the rate-up character.">Single Rate-Up Pool: 2.95% chance to get the rate-up character.</h3>
+            <h3 data-translate="Single Rate-Up Pool: 2.95% chance to get the rate-up Jyanshi.">Single Rate-Up Pool: 2.95% chance to get the rate-up Jyanshi.</h3>
             
             <div id="singleup-character-display" class="character-display"></div>
 
@@ -175,7 +175,7 @@
                 <label for="n-singleup-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-singleup-score">
                 <span id="n-singleup-score-error" class="error-text"></span>
-                <label for="k-singleup-score" data-translate="Number of rate-up characters summoned">Number of rate-up characters summoned</label>
+                <label for="k-singleup-score" data-translate="Number of rate-up Jyanshis summoned">Number of rate-up Jyanshis summoned</label>
                 <input type="number" id="k-singleup-score">
                 <span id="k-singleup-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('singleup', config.pools.singleup.probability)" data-translate="Calculate">Calculate</button>
@@ -188,7 +188,7 @@
 
     <div id="normal-content" class="content">
         <div class="pool-section">
-            <h3 data-translate="Normal Pool: 5% chance to get a character.">Normal Pool: 5% chance to get a character.</h3>
+            <h3 data-translate="Normal Pool: 5% chance to get a Jyanshi.">Normal Pool: 5% chance to get a Jyanshi.</h3>
             
             <div id="normal-character-display" class="character-display"></div>
 
@@ -204,7 +204,7 @@
                 <label for="n-normal-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-normal-score">
                 <span id="n-normal-score-error" class="error-text"></span>
-                <label for="k-normal-score" data-translate="Number of characters summoned (including duplicates)">Number of characters summoned (including duplicates)</label>
+                <label for="k-normal-score" data-translate="Number of Jyanshis summoned (including duplicates)">Number of Jyanshis summoned (including duplicates)</label>
                 <input type="number" id="k-normal-score">
                 <span id="k-normal-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('normal', config.pools.normal.probability)" data-translate="Calculate">Calculate</button>
