@@ -1,10 +1,16 @@
 const pools = ['event', 'limited', 'collab', 'doubleup', 'singleup', 'normal', 'custom'];
 let config = null;
 let bExplanationExpanded = false;
+let bCorrect10Summon = false;
 
 document.addEventListener('DOMContentLoaded', async function() {
     // Load config.json
     config = await fetchConfig();
+
+    // Setup correct summon count checkbox
+    pools.forEach(pool => {
+        SetupCorrectSummonCountCheckbox(`${pool}`);
+    });
 
     await initLocalization();
 
@@ -42,6 +48,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById(`${pool}-content`).classList.add('active');
             
             SetupExplanation(`${pool}`);
+
+            // Synchronize correct-10-summon state
+            const checkbox = document.getElementById(`${pool}-correct-10-summon`);
+            if(checkbox) checkbox.checked = bCorrect10Summon;
         });
     });
 });
@@ -309,5 +319,28 @@ function SetupCharacterDisplay(pool) {
             if(description.textContent.length > 0)
                 characterDisplay.appendChild(description);
         }
+    }
+}
+
+function SetupCorrectSummonCountCheckbox(pool) {
+    const checkboxSection = document.getElementById(`${pool}-correct-10-summon-section`);
+    if(checkboxSection) {
+        checkboxSection.innerHTML = `
+            <label class="checkbox-label">
+                <input type="checkbox" id="${pool}-correct-10-summon">
+                <span data-translate="Correct 10-summon">Correct 10-summon</span>
+                <span class="tooltip-icon info-circle" data-tooltip="correct-10-summon-tooltip" data-tooltip-text="A 10-summon is actually 9 summons plus 1 purple gift. Correct the summon count for accurate probability.">?
+                </span>
+            </label>
+        `;
+    }
+
+    // Setup event listener for state change
+    const checkbox = document.getElementById(`${pool}-correct-10-summon`);
+    if(checkbox) {
+        checkbox.checked = bCorrect10Summon;
+        checkbox.addEventListener('change', function() {
+            bCorrect10Summon = this.checked;
+        });
     }
 }
