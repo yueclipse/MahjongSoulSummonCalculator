@@ -42,10 +42,10 @@
 
             <div class="calc-group">
                 <label for="n-event" data-translate="Expected number of summons">Expected number of summons</label>
-                <input type="number" id="n-event">
+                <input type="number" id="n-event" inputmode="numeric">
                 <span id="n-event-error" class="error-text"></span>
                 <label for="s-event" id="s-event-label" data-translate="Number of distinct event Jyanshis already summoned">Number of distinct event Jyanshis already summoned</label>
-                <input type="number" id="s-event">
+                <input type="number" id="s-event" inputmode="numeric">
                 <span id="s-event-error" class="error-text"></span>
                 <button onclick="calculateEventSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-event-success" class="output"></div>
@@ -53,10 +53,10 @@
             
             <div class="calc-group">
                 <label for="n-event-score" data-translate="Number of summons">Number of summons</label>
-                <input type="number" id="n-event-score">
+                <input type="number" id="n-event-score" inputmode="numeric">
                 <span id="n-event-score-error" class="error-text"></span>
                 <label for="k-event-score" data-translate="Number of event Jyanshis summoned (including duplicates)">Number of event Jyanshis summoned (including duplicates)</label>
-                <input type="number" id="k-event-score">
+                <input type="number" id="k-event-score" inputmode="numeric">
                 <span id="k-event-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('event', config.pools.event.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-event-score" class="output"></div>
@@ -76,7 +76,7 @@
 
             <div class="calc-group">
                 <label for="n-limited" data-translate="Expected number of summons">Expected number of summons</label>
-                <input type="number" id="n-limited">
+                <input type="number" id="n-limited" inputmode="numeric">
                 <span id="n-limited-error" class="error-text"></span>
                 <button onclick="calculateLimitedSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-limited-success" class="output"></div>
@@ -84,10 +84,10 @@
             
             <div class="calc-group">
                 <label for="n-limited-score" data-translate="Number of summons">Number of summons</label>
-                <input type="number" id="n-limited-score">
+                <input type="number" id="n-limited-score" inputmode="numeric">
                 <span id="n-limited-score-error" class="error-text"></span>
                 <label for="k-limited-score" data-translate="Number of limited Jyanshis summoned">Number of limited Jyanshis summoned</label>
-                <input type="number" id="k-limited-score">
+                <input type="number" id="k-limited-score" inputmode="numeric">
                 <span id="k-limited-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('limited', config.pools.limited.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-limited-score" class="output"></div>
@@ -107,10 +107,10 @@
 
             <div class="calc-group">
                 <label for="n-collab" data-translate="Expected number of summons">Expected number of summons</label>
-                <input type="number" id="n-collab">
+                <input type="number" id="n-collab" inputmode="numeric">
                 <span id="n-collab-error" class="error-text"></span>
                 <label for="s-collab" data-translate="Number of distinct collaboration Jyanshis already summoned">Number of distinct collaboration Jyanshis already summoned</label>
-                <input type="number" id="s-collab">
+                <input type="number" id="s-collab" inputmode="numeric">
                 <span id="s-collab-error" class="error-text"></span>
                 <button onclick="calculateCollabSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-collab-success" class="output"></div>
@@ -118,10 +118,10 @@
             
             <div class="calc-group">
                 <label for="n-collab-score" data-translate="Number of summons">Number of summons</label>
-                <input type="number" id="n-collab-score">
+                <input type="number" id="n-collab-score" inputmode="numeric">
                 <span id="n-collab-score-error" class="error-text"></span>
                 <label for="k-collab-score" data-translate="Number of collaboration Jyanshis summoned (including duplicates)">Number of collaboration Jyanshis summoned (including duplicates)</label>
-                <input type="number" id="k-collab-score">
+                <input type="number" id="k-collab-score" inputmode="numeric">
                 <span id="k-collab-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('collab', config.pools.collab.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-collab-score" class="output"></div>
@@ -141,10 +141,10 @@
 
             <div class="calc-group">
                 <label for="n-doubleup" data-translate="Expected number of summons">Expected number of summons</label>
-                <input type="number" id="n-doubleup">
+                <input type="number" id="n-doubleup" inputmode="numeric">
                 <span id="n-doubleup-error" class="error-text"></span>
                 <label for="s-doubleup" data-translate="Number of distinct rate-up Jyanshis already summoned">Number of distinct rate-up Jyanshis already summoned</label>
-                <input type="number" id="s-doubleup">
+                <input type="number" id="s-doubleup" inputmode="numeric">
                 <span id="s-doubleup-error" class="error-text"></span>
                 <button onclick="calculateDoubleUpSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-doubleup-success" class="output"></div>
@@ -152,10 +152,10 @@
             
             <div class="calc-group">
                 <label for="n-doubleup-score" data-translate="Number of summons">Number of summons</label>
-                <input type="number" id="n-doubleup-score">
+                <input type="number" id="n-doubleup-score" inputmode="numeric">
                 <span id="n-doubleup-score-error" class="error-text"></span>
                 <label for="k-doubleup-score" data-translate="Number of rate-up Jyanshis summoned (including duplicates)">Number of rate-up Jyanshis summoned (including duplicates)</label>
-                <input type="number" id="k-doubleup-score">
+                <input type="number" id="k-doubleup-score" inputmode="numeric">
                 <span id="k-doubleup-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('doubleup', config.pools.doubleup.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-doubleup-score" class="output"></div>
@@ -175,7 +175,7 @@
 
             <div class="calc-group">
                 <label for="n-singleup" data-translate="Expected number of summons">Expected number of summons</label>
-                <input type="number" id="n-singleup">
+                <input type="number" id="n-singleup" inputmode="numeric">
                 <span id="n-singleup-error" class="error-text"></span>
                 <button onclick="calculateSingleUpSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-singleup-success" class="output"></div>
@@ -183,10 +183,10 @@
             
             <div class="calc-group">
                 <label for="n-singleup-score" data-translate="Number of summons">Number of summons</label>
-                <input type="number" id="n-singleup-score">
+                <input type="number" id="n-singleup-score" inputmode="numeric">
                 <span id="n-singleup-score-error" class="error-text"></span>
                 <label for="k-singleup-score" data-translate="Number of rate-up Jyanshis summoned">Number of rate-up Jyanshis summoned</label>
-                <input type="number" id="k-singleup-score">
+                <input type="number" id="k-singleup-score" inputmode="numeric">
                 <span id="k-singleup-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('singleup', config.pools.singleup.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-singleup-score" class="output"></div>
@@ -206,7 +206,7 @@
 
             <div class="calc-group">
                 <label for="n-normal" data-translate="Expected number of summons">Expected number of summons</label>
-                <input type="number" id="n-normal">
+                <input type="number" id="n-normal" inputmode="numeric">
                 <span id="n-normal-error" class="error-text"></span>
                 <button onclick="calculateNormalSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-normal-success" class="output"></div>
@@ -214,10 +214,10 @@
             
             <div class="calc-group">
                 <label for="n-normal-score" data-translate="Number of summons">Number of summons</label>
-                <input type="number" id="n-normal-score">
+                <input type="number" id="n-normal-score" inputmode="numeric">
                 <span id="n-normal-score-error" class="error-text"></span>
                 <label for="k-normal-score" data-translate="Number of Jyanshis summoned (including duplicates)">Number of Jyanshis summoned (including duplicates)</label>
-                <input type="number" id="k-normal-score">
+                <input type="number" id="k-normal-score" inputmode="numeric">
                 <span id="k-normal-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('normal', config.pools.normal.probability)" data-translate="Calculate">Calculate</button>
                 <div id="output-normal-score" class="output"></div>
@@ -235,19 +235,19 @@
             
             <div class="calc-group">
                 <label for="p-custom" data-translate="Probability (%)">Probability (%)</label>
-                <input type="number" step="0.1" id="p-custom">
+                <input type="number" step="0.1" id="p-custom" inputmode="decimal">
                 <span id="p-custom-error" class="error-text"></span>
                 <label for="m-custom" data-translate="Pool Size">Pool Size</label>
-                <input type="number" id="m-custom">
+                <input type="number" id="m-custom" inputmode="numeric">
                 <span id="m-custom-error" class="error-text"></span>
             </div>
 
             <div class="calc-group">
                 <label for="n-custom" data-translate="Expected number of draws">Expected number of draws</label>
-                <input type="number" id="n-custom">
+                <input type="number" id="n-custom" inputmode="numeric">
                 <span id="n-custom-error" class="error-text"></span>
                 <label for="s-custom" data-translate="Number of distinct prizes already pulled (Ignore if Pool Size is 1)">Number of distinct prizes already pulled (Ignore if Pool Size is 1)</label>
-                <input type="number" id="s-custom">
+                <input type="number" id="s-custom" inputmode="numeric">
                 <span id="s-custom-error" class="error-text"></span>
                 <button onclick="calculateCustomSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-custom-success" class="output"></div>
@@ -255,10 +255,10 @@
             
             <div class="calc-group">
                 <label for="n-custom-score" data-translate="Number of draws">Number of draws</label>
-                <input type="number" id="n-custom-score">
+                <input type="number" id="n-custom-score" inputmode="numeric">
                 <span id="n-custom-score-error" class="error-text"></span>
                 <label for="k-custom-score" data-translate="Number of prizes pulled (including duplicates)">Number of prizes pulled (including duplicates)</label>
-                <input type="number" id="k-custom-score">
+                <input type="number" id="k-custom-score" inputmode="numeric">
                 <span id="k-custom-score-error" class="error-text"></span>
                 <button onclick="calculateLuckScore('custom', 0)" data-translate="Calculate">Calculate</button>
                 <div id="output-custom-score" class="output"></div>
