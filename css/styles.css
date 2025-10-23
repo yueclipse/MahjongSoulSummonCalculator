@@ -280,6 +280,16 @@ input {
     z-index: 1000;
 }
 
+@media (max-width: 600px) {
+    .tooltip-icon::after {
+        position: fixed;
+        bottom: 20px;
+        margin: 0;
+        max-width: 85%;
+        text-align: center;
+    }
+}
+
 .tooltip-icon:hover::after {
     opacity: 0.8;
     visibility: visible;
