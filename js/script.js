@@ -81,103 +81,138 @@ function calculateSuccessProbability(n, m, s, p) {
     return dp;
 }
 
+function correct10Summon(n) {
+    return Math.floor(n / 10) * 9 + n % 10;
+}
+
 function calculateEventSuccessProbability() {
-    const n = parseInt(document.getElementById('n-event').value);
-    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-event')) return;
+    const input_n = parseInt(document.getElementById('n-event').value);
+    if(!validateInput(input_n, config.settings.nMin, config.settings.nMax, 'n-event')) return;
+    const n = (bCorrect10Summon) ? correct10Summon(input_n) : input_n;
+
     const s = config.pools.event.maxCharacters > 1 ? parseInt(document.getElementById('s-event').value) : 0;
     if(!validateInput(s, config.settings.sMin, config.pools.event.maxCharacters - 1, 's-event')) return;
+
     let dp = calculateSuccessProbability(n, config.pools.event.maxCharacters, s, config.pools.event.probability);
+    let output = '';
     if(config.pools.event.maxCharacters > 1) { 
-        let output = '';
         let sum = 0;
         for(let i = s; i < config.pools.event.maxCharacters && i - s + 1 <= n; i++) {
             sum += dp[i];
-            output += t("At least {0} new event Jyanshi(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
+            if(i > s) output += "<br>";
+            output += t("At least {0} new event Jyanshi(s): {1}", {0: i - s + 1, 1: printPercentage(1 - sum)});
         }
-        document.getElementById('output-event-success').innerHTML = `<p>${output}</p>`;
     } else {
         let result = 1 - dp[0];
-        document.getElementById('output-event-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
+        output += t("Probability of success: {0}", {0: printPercentage(result)});
     }
+    if(bCorrect10Summon) output += t("<br>(Corrected number of summons: {0})", {0: n});
+    document.getElementById('output-event-success').innerHTML = `<p>${output}</p>`;
 }
 
 function calculateLimitedSuccessProbability() {
-    const n = parseInt(document.getElementById('n-limited').value);
-    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-limited')) return;
+    const input_n = parseInt(document.getElementById('n-limited').value);
+    if(!validateInput(input_n, config.settings.nMin, config.settings.nMax, 'n-limited')) return;
+    const n = (bCorrect10Summon) ? correct10Summon(input_n) : input_n;
+
     let dp = calculateSuccessProbability(n, config.pools.limited.maxCharacters, 0, config.pools.limited.probability);
     let result = 1 - dp[0];
-    document.getElementById('output-limited-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
+    let output = t("Probability of success: {0}", {0: printPercentage(result)});
+    if(bCorrect10Summon) output += t("<br>(Corrected number of summons: {0})", {0: n});
+    document.getElementById('output-limited-success').innerHTML = `<p>${output}</p>`;
 }
 
 function calculateCollabSuccessProbability() {
-    const n = parseInt(document.getElementById('n-collab').value);
-    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-collab')) return;
+    const input_n = parseInt(document.getElementById('n-collab').value);
+    if(!validateInput(input_n, config.settings.nMin, config.settings.nMax, 'n-collab')) return;
+    const n = (bCorrect10Summon) ? correct10Summon(input_n) : input_n;
+
     const s = parseInt(document.getElementById('s-collab').value);
     if(!validateInput(s, config.settings.sMin, config.pools.collab.maxCharacters - 1, 's-collab')) return;
+
     let dp = calculateSuccessProbability(n, config.pools.collab.maxCharacters, s, config.pools.collab.probability);
     let output = '';
     let sum = 0;
     for(let i = s; i < config.pools.collab.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
-        output += t("At least {0} new collaboration Jyanshi(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
+        if(i > s) output += "<br>";
+        output += t("At least {0} new collaboration Jyanshi(s): {1}", {0: i - s + 1, 1: printPercentage(1 - sum)});
     }
+    if(bCorrect10Summon) output += t("<br>(Corrected number of summons: {0})", {0: n});
     document.getElementById('output-collab-success').innerHTML = `<p>${output}</p>`;
 }
 
 function calculateDoubleUpSuccessProbability() {
-    const n = parseInt(document.getElementById('n-doubleup').value);
-    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-doubleup')) return;
+    const input_n = parseInt(document.getElementById('n-doubleup').value);
+    if(!validateInput(input_n, config.settings.nMin, config.settings.nMax, 'n-doubleup')) return;
+    const n = (bCorrect10Summon) ? correct10Summon(input_n) : input_n;
+
     const s = parseInt(document.getElementById('s-doubleup').value);
     if(!validateInput(s, config.settings.sMin, config.pools.doubleup.maxCharacters - 1, 's-doubleup')) return;
+
     let dp = calculateSuccessProbability(n, config.pools.doubleup.maxCharacters, s, config.pools.doubleup.probability);
     let output = '';
     let sum = 0;
     for(let i = s; i < config.pools.doubleup.maxCharacters && i - s + 1 <= n; i++) {
         sum += dp[i];
-        output += t("At least {0} new rate-up Jyanshi(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
+        if(i > s) output += "<br>";
+        output += t("At least {0} new rate-up Jyanshi(s): {1}", {0: i - s + 1, 1: printPercentage(1 - sum)});
     }
+    if(bCorrect10Summon) output += t("<br>(Corrected number of summons: {0})", {0: n});
     document.getElementById('output-doubleup-success').innerHTML = `<p>${output}</p>`;
 }
 
 function calculateSingleUpSuccessProbability() {
-    const n = parseInt(document.getElementById('n-singleup').value);
-    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-singleup')) return;
+    const input_n = parseInt(document.getElementById('n-singleup').value);
+    if(!validateInput(input_n, config.settings.nMin, config.settings.nMax, 'n-singleup')) return;
+    const n = (bCorrect10Summon) ? correct10Summon(input_n) : input_n;
+
     let dp = calculateSuccessProbability(n, config.pools.singleup.maxCharacters, 0, config.pools.singleup.probability);
     let result = 1 - dp[0];
-    document.getElementById('output-singleup-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
+    let output = t("Probability of success: {0}", {0: printPercentage(result)});
+    if(bCorrect10Summon) output += t("<br>(Corrected number of summons: {0})", {0: n});
+    document.getElementById('output-singleup-success').innerHTML = `<p>${output}</p>`;
 }
 
 function calculateNormalSuccessProbability() {
-    const n = parseInt(document.getElementById('n-normal').value);
-    if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-normal')) return;
+    const input_n = parseInt(document.getElementById('n-normal').value);
+    if(!validateInput(input_n, config.settings.nMin, config.settings.nMax, 'n-normal')) return;
+    const n = (bCorrect10Summon) ? correct10Summon(input_n) : input_n;
+
     let dp = calculateSuccessProbability(n, config.pools.normal.maxCharacters, 0, config.pools.normal.probability);
     let result = 1 - dp[0];
-    document.getElementById('output-normal-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
+    let output = t("Probability of success: {0}", {0: printPercentage(result)});
+    if(bCorrect10Summon) output += t("<br>(Corrected number of summons: {0})", {0: n});
+    document.getElementById('output-normal-success').innerHTML = `<p>${output}</p>`;
 }
 
 function calculateCustomSuccessProbability() {
     let prob = parseFloat(document.getElementById('p-custom').value);
     if(!validateInput(prob, config.settings.pMin, config.settings.pMax, 'p-custom')) return;
     const p = prob / 100;
+
     const m = parseInt(document.getElementById('m-custom').value);
     if(!validateInput(m, config.settings.mMin, config.settings.mMax, 'm-custom')) return;
+
     const n = parseInt(document.getElementById('n-custom').value);
     if(!validateInput(n, config.settings.nMin, config.settings.nMax, 'n-custom')) return;
+
     const s = m > 1 ? parseInt(document.getElementById('s-custom').value) : 0;
     if(!validateInput(s, config.settings.sMin, m - 1, 's-custom')) return;
+
     let dp = calculateSuccessProbability(n, m, s, p);
+    let output = '';
     if(m > 1) { 
-        let output = '';
         let sum = 0;
         for(let i = s; i < m; i++) {
             sum += dp[i];
             output += t("At least {0} new prize(s): {1}<br>", {0: i - s + 1, 1: printPercentage(1 - sum)});
         }
-        document.getElementById('output-custom-success').innerHTML = `<p>${output}</p>`;
     } else {
         let result = 1 - dp[0];
-        document.getElementById('output-custom-success').textContent = t("Probability of success: {0}", {0: printPercentage(result)});
+        output += t("Probability of success: {0}", {0: printPercentage(result)});
     }
+    document.getElementById('output-custom-success').innerHTML = `<p>${output}</p>`;
 }
 
 // CDF
@@ -200,10 +235,13 @@ function calculateLuckScore(pool, p) {
         if(!validateInput(p, config.settings.pMin, config.settings.pMax, 'p-custom')) return;
         p /= 100;
     }
-    const n = parseInt(document.getElementById(`n-${pool}-score`).value);
-    if(!validateInput(n, config.settings.nMin, config.settings.nMax, `n-${pool}-score`)) return;
+    const input_n = parseInt(document.getElementById(`n-${pool}-score`).value);
+    if(!validateInput(input_n, config.settings.nMin, config.settings.nMax, `n-${pool}-score`)) return;
+    const n = (bCorrect10Summon && pool != 'custom') ? correct10Summon(input_n) : input_n;
+
     const k = parseInt(document.getElementById(`k-${pool}-score`).value);
     if(!validateInput(k, config.settings.kMin, n, `k-${pool}-score`)) return;
+
     let result = calculateCumulativeDistribution(n, p, k);
     console.log(result);
     var rating;
@@ -214,7 +252,9 @@ function calculateLuckScore(pool, p) {
     if(result >= 0.8 && result < 0.95) rating = t('Lucky');
     if(result >= 0.95 && result < 0.99) rating = t('Very Lucky');
     if(result >= 0.99) rating = t('Extreme Lucky');
-    document.getElementById(`output-${pool}-score`).textContent = t("Luck Score: {0} ({1})", {0: (result * 100).toFixed(1), 1: rating});
+    let output = t("Luck Score: {0} ({1})", {0: (result * 100).toFixed(1), 1: rating});
+    if(bCorrect10Summon && pool != 'custom') output += t("<br>(Corrected number of summons: {0})", {0: n});
+    document.getElementById(`output-${pool}-score`).innerHTML = `<p>${output}</p>`;
 }
 
 function validateInput(num, min, max, id) {
@@ -329,7 +369,7 @@ function SetupCorrectSummonCountCheckbox(pool) {
             <label class="checkbox-label">
                 <input type="checkbox" id="${pool}-correct-10-summon">
                 <span data-translate="Correct 10-summon">Correct 10-summon</span>
-                <span class="tooltip-icon info-circle" data-tooltip="correct-10-summon-tooltip" data-tooltip-text="A 10-summon is actually 9 summons plus 1 purple gift. Correct the summon count for accurate probability.">?
+                <span class="tooltip-icon info-circle" data-tooltip="correct-10-summon-tooltip" data-tooltip-text="A 10-summon is actually 9 summons plus 1 purple gift. Correct the summon count for accurate results.">?
                 </span>
             </label>
         `;
