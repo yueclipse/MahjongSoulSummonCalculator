@@ -31,11 +31,11 @@
 	"Number of draws": "抽取次數",
 	"Number of distinct prizes already pulled (Ignore if Pool Size is 1)": "已獲得的獎品數量 (不重複、池大小為 1 則忽略)",
 	"Number of prizes pulled (including duplicates)": "已獲得的獎品數量 (含重複)",
-	"At least {0} new event Jyanshi(s): {1}<br>": "至少 {0} 位新活動雀士：{1}<br>",
+	"At least {0} new event Jyanshi(s): {1}": "至少 {0} 位新活動雀士：{1}",
 	"Probability of success: {0}": "成功機率：{0}",
-	"At least {0} new collaboration Jyanshi(s): {1}<br>": "至少 {0} 位新聯動雀士：{1}<br>",
-	"At least {0} new rate-up Jyanshi(s): {1}<br>": "至少 {0} 位新UP雀士：{1}<br>",
-	"At least {0} new prize(s): {1}<br>": "至少 {0} 個新獎品：{1}<br>",
+	"At least {0} new collaboration Jyanshi(s): {1}": "至少 {0} 位新聯動雀士：{1}",
+	"At least {0} new rate-up Jyanshi(s): {1}": "至少 {0} 位新UP雀士：{1}",
+	"At least {0} new prize(s): {1}": "至少 {0} 個新獎品：{1}",
 	"Please enter a number between {0} and {1}.": "請輸入 {0} 到 {1} 之間的數字。",
 	"Extreme Unlucky": "非洲酋長",
 	"Very Unlucky": "大非洲人",
@@ -46,5 +46,6 @@
 	"Extreme Lucky": "歐洲教皇",
 	"Luck Score: {0} ({1})": "幸運分數： {0} ({1})",
 	"Correct 10-summon": "補正十連尋覓",
-	"A 10-summon is actually 9 summons plus 1 purple gift. Correct the summon count for accurate probability.": "十連尋覓實際上是 9 次加上 1 個紫禮，補正次數以計算準確的機率。"
+	"A 10-summon is actually 9 summons plus 1 purple gift. Correct the summon count for accurate results.": "十連尋覓實際上是 9 次加上 1 個紫禮，補正次數以獲得準確的結果。",
+	"<br>(Corrected number of summons: {0})": "<br>(補正後尋覓次數：{0})"
 }
