@@ -31,10 +31,17 @@ class LanguageManager {
 
 	updatePage() {
 		const elements = document.querySelectorAll('[data-translate]');
-
 		elements.forEach(element => {
 			const key = element.getAttribute('data-translate');
 			element.textContent = this.translate(key);
+		});
+
+		document.querySelectorAll('.tooltip-icon').forEach(icon => {
+			const tooltipKey = icon.getAttribute('data-tooltip-text');
+			if(tooltipKey) {
+				const tooltipText = this.translate(tooltipKey);
+				icon.setAttribute('data-tooltip-text', tooltipText);
+			}
 		});
 
 		document.title = this.translate('Mahjong Soul Summon Calculator');

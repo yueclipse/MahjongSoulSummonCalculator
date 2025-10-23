@@ -44,5 +44,7 @@
 	"Lucky": "歐洲人",
 	"Very Lucky": "大歐洲人",
 	"Extreme Lucky": "歐洲教皇",
-	"Luck Score: {0} ({1})": "幸運分數： {0} ({1})"
+	"Luck Score: {0} ({1})": "幸運分數： {0} ({1})",
+	"Correct 10-summon": "補正十連尋覓",
+	"A 10-summon is actually 9 summons plus 1 purple gift. Correct the summon count for accurate probability.": "十連尋覓實際上是 9 次加上 1 個紫禮，補正次數以計算準確的機率。"
 }
