@@ -50,6 +50,20 @@
                 <button onclick="calculateEventSuccessProbability()" data-translate="Calculate">Calculate</button>
                 <div id="output-event-success" class="output"></div>
             </div>
+
+            <div class="calc-group">
+                <label for="n-event-target" data-translate="Target success probability (%)">Target success probability (%)</label>
+                <input type="number" id="n-event-target" inputmode="decimal">
+                <span id="n-event-target-error" class="error-text"></span>
+                <label for="s-event-target" id="s-event-target-label" data-translate="Number of distinct event Jyanshis already summoned">Number of distinct event Jyanshis already summoned</label>
+                <input type="number" id="s-event-target" inputmode="numeric">
+                <span id="s-event-target-error" class="error-text"></span>
+                <label for="target-s-event-target" id="target-s-event-target-label" data-translate="Expected number of new event Jyanshis">Expected number of new event Jyanshis</label>
+                <input type="number" id="target-s-event-target" inputmode="numeric">
+                <span id="target-s-event-target-error" class="error-text"></span>
+                <button onclick="calculateEventSummonNum()" data-translate="Calculate">Calculate</button>
+                <div id="output-event-target" class="output"></div>
+            </div>
             
             <div class="calc-group">
                 <label for="n-event-score" data-translate="Number of summons">Number of summons</label>
@@ -82,6 +96,14 @@
                 <div id="output-limited-success" class="output"></div>
             </div>
             
+            <div class="calc-group">
+                <label for="n-limited-target" data-translate="Target success probability (%)">Target success probability (%)</label>
+                <input type="number" id="n-limited-target" inputmode="decimal">
+                <span id="n-limited-target-error" class="error-text"></span>
+                <button onclick="calculateLimitedSummonNum()" data-translate="Calculate">Calculate</button>
+                <div id="output-limited-target" class="output"></div>
+            </div>
+
             <div class="calc-group">
                 <label for="n-limited-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-limited-score" inputmode="numeric">
@@ -117,6 +139,20 @@
             </div>
             
             <div class="calc-group">
+                <label for="n-collab-target" data-translate="Target success probability (%)">Target success probability (%)</label>
+                <input type="number" id="n-collab-target" inputmode="decimal">
+                <span id="n-collab-target-error" class="error-text"></span>
+                <label for="s-collab-target" data-translate="Number of distinct collaboration Jyanshis already summoned">Number of distinct collaboration Jyanshis already summoned</label>
+                <input type="number" id="s-collab-target" inputmode="numeric">
+                <span id="s-collab-target-error" class="error-text"></span>
+                <label for="target-s-collab-target" data-translate="Expected number of new collaboration Jyanshis">Expected number of new collaboration Jyanshis</label>
+                <input type="number" id="target-s-collab-target" inputmode="numeric">
+                <span id="target-s-collab-target-error" class="error-text"></span>
+                <button onclick="calculateCollabSummonNum()" data-translate="Calculate">Calculate</button>
+                <div id="output-collab-target" class="output"></div>
+            </div>
+
+            <div class="calc-group">
                 <label for="n-collab-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-collab-score" inputmode="numeric">
                 <span id="n-collab-score-error" class="error-text"></span>
@@ -151,6 +187,20 @@
             </div>
             
             <div class="calc-group">
+                <label for="n-doubleup-target" data-translate="Target success probability (%)">Target success probability (%)</label>
+                <input type="number" id="n-doubleup-target" inputmode="decimal">
+                <span id="n-doubleup-target-error" class="error-text"></span>
+                <label for="s-doubleup-target" data-translate="Number of distinct rate-up Jyanshis already summoned">Number of distinct rate-up Jyanshis already summoned</label>
+                <input type="number" id="s-doubleup-target" inputmode="numeric">
+                <span id="s-doubleup-target-error" class="error-text"></span>
+                <label for="target-s-doubleup-target" data-translate="Expected number of new rate-up Jyanshis">Expected number of new rate-up Jyanshis</label>
+                <input type="number" id="target-s-doubleup-target" inputmode="numeric">
+                <span id="target-s-doubleup-target-error" class="error-text"></span>
+                <button onclick="calculateDoubleUpSummonNum()" data-translate="Calculate">Calculate</button>
+                <div id="output-doubleup-target" class="output"></div>
+            </div>
+
+            <div class="calc-group">
                 <label for="n-doubleup-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-doubleup-score" inputmode="numeric">
                 <span id="n-doubleup-score-error" class="error-text"></span>
@@ -182,6 +232,14 @@
             </div>
             
             <div class="calc-group">
+                <label for="n-singleup-target" data-translate="Target success probability (%)">Target success probability (%)</label>
+                <input type="number" id="n-singleup-target" inputmode="decimal">
+                <span id="n-singleup-target-error" class="error-text"></span>
+                <button onclick="calculateSingleUpSummonNum()" data-translate="Calculate">Calculate</button>
+                <div id="output-singleup-target" class="output"></div>
+            </div>
+
+            <div class="calc-group">
                 <label for="n-singleup-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-singleup-score" inputmode="numeric">
                 <span id="n-singleup-score-error" class="error-text"></span>
@@ -212,6 +270,14 @@
                 <div id="output-normal-success" class="output"></div>
             </div>
             
+            <div class="calc-group">
+                <label for="n-normal-target" data-translate="Target success probability (%)">Target success probability (%)</label>
+                <input type="number" id="n-normal-target" inputmode="decimal">
+                <span id="n-normal-target-error" class="error-text"></span>
+                <button onclick="calculateNormalSummonNum()" data-translate="Calculate">Calculate</button>
+                <div id="output-normal-target" class="output"></div>
+            </div>
+
             <div class="calc-group">
                 <label for="n-normal-score" data-translate="Number of summons">Number of summons</label>
                 <input type="number" id="n-normal-score" inputmode="numeric">
@@ -253,6 +319,20 @@
                 <div id="output-custom-success" class="output"></div>
             </div>
             
+            <div class="calc-group">
+                <label for="n-custom-target" data-translate="Target success probability (%)">Target success probability (%)</label>
+                <input type="number" id="n-custom-target" inputmode="decimal">
+                <span id="n-custom-target-error" class="error-text"></span>
+                <label for="s-custom-target" data-translate="Number of distinct prizes already pulled (Ignore if Pool Size is 1)">Number of distinct prizes already pulled (Ignore if Pool Size is 1)</label>
+                <input type="number" id="s-custom-target" inputmode="numeric">
+                <span id="s-custom-target-error" class="error-text"></span>
+                <label for="target-s-custom-target" data-translate="Expected number of new prizes (Ignore if Pool Size is 1)">Expected number of new prizes (Ignore if Pool Size is 1)</label>
+                <input type="number" id="target-s-custom-target" inputmode="numeric">
+                <span id="target-s-custom-target-error" class="error-text"></span>
+                <button onclick="calculateCustomSummonNum()" data-translate="Calculate">Calculate</button>
+                <div id="output-custom-target" class="output"></div>
+            </div>
+
             <div class="calc-group">
                 <label for="n-custom-score" data-translate="Number of draws">Number of draws</label>
                 <input type="number" id="n-custom-score" inputmode="numeric">

@@ -86,8 +86,9 @@
 	},
 	"settings": {
 		"nMin": 1,
-		"nMax": 1000,
+		"nMax": 999,
 		"sMin": 0,
+		"targetsMin": 1,
 		"kMin": 0,
 		"pMin": 0.0001,
 		"pMax": 99.9999,

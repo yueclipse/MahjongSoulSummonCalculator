@@ -24,8 +24,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         let title = languageManager ? config.pools.event.title[languageManager.currentLanguage] : config.pools.event.title['en'];
         document.getElementById('event-title').textContent = title;
         if(config.pools.event.maxCharacters <= 1) {
+            // Success 
             document.getElementById('s-event-label').style.display = 'none';
             document.getElementById('s-event').style.display = 'none';
+            // Target
+            document.getElementById('s-event-target-label').style.display = 'none';
+            document.getElementById('s-event-target').style.display = 'none';
+            document.getElementById('target-s-event-target-label').style.display = 'none';
+            document.getElementById('target-s-event-target').style.display = 'none';
         }
     } else {
         // Otherwise, default at limited
@@ -65,6 +71,12 @@ function printPercentage(p) {
     return `${(p * 100).toFixed(2)}%`;
 }
 
+/*
+n: summon num
+m: pool size
+s: summoned num
+p: pool probability
+*/
 function calculateSuccessProbability(n, m, s, p) {
     const p_each = p / m;
     let dp = new Array(m + 1).fill(0);
@@ -79,6 +91,40 @@ function calculateSuccessProbability(n, m, s, p) {
         dp = next;
     }
     return dp;
+}
+
+/*
+target: target probability
+target_s: target distinct summon num
+m: pool size
+s: summoned num
+p: pool probability
+*/
+function calculateSummonNum(target, target_s, m, s, p) {
+    let result = 0;
+    let result_prob = 0.0;
+    const p_each = p / m;
+    let dp = new Array(m + 1).fill(0);
+    dp[s] = 1;
+    while(result + 1 <= config.settings.nMax) {
+        result++;
+        let next = new Array(m + 1).fill(0);
+        for (let j = s; j <= m; j++) {
+            const p_add = (m - j) * p_each;
+            next[j] += dp[j] * (1 - p_add);
+            if (j < m) next[j + 1] += dp[j] * p_add;
+        }
+        dp = next;
+
+        result_prob = 0.0;
+        for(let i = s; i - s < target_s && i - s + 1 <= result; i++)
+            result_prob += dp[i];
+        result_prob = 1 - result_prob;
+
+        if(result >= target_s && result_prob >= target && (!bCorrect10Summon || result % 9 == 0))
+            break;
+    }
+    return [result, result_prob];
 }
 
 function correct10Summon(n) {
@@ -213,6 +259,123 @@ function calculateCustomSuccessProbability() {
         output += t("Probability of success: {0}", {0: printPercentage(result)});
     }
     document.getElementById('output-custom-success').innerHTML = `<p>${output}</p>`;
+}
+
+function calculateEventSummonNum() {
+    const input_target = parseFloat(document.getElementById('n-event-target').value);
+    if(!validateInput(input_target, config.settings.pMin, config.settings.pMax, 'n-event-target')) return;
+    const target = input_target / 100;
+
+    const s = config.pools.event.maxCharacters > 1 ? parseInt(document.getElementById('s-event-target').value) : 0;
+    if(!validateInput(s, config.settings.sMin, config.pools.event.maxCharacters - 1, 's-event-target')) return;
+
+    const target_s = config.pools.event.maxCharacters > 1 ? parseInt(document.getElementById('target-s-event-target').value) : 1;
+    if(!validateInput(target_s, config.settings.targetsMin, config.pools.event.maxCharacters - s, 'target-s-event-target')) return;
+
+    const [n, p] = calculateSummonNum(target, target_s, config.pools.event.maxCharacters, s, config.pools.event.probability);
+
+    printSummonNumResult(n, p, target, 'event');
+}
+
+function calculateLimitedSummonNum() {
+    const input_target = parseFloat(document.getElementById('n-limited-target').value);
+    if(!validateInput(input_target, config.settings.pMin, config.settings.pMax, 'n-limited-target')) return;
+    const target = input_target / 100;
+
+    const [n, p] = calculateSummonNum(target, 1, config.pools.limited.maxCharacters, 0, config.pools.limited.probability);
+
+    printSummonNumResult(n, p, target, 'limited');
+}
+
+function calculateCollabSummonNum() {
+    const input_target = parseFloat(document.getElementById('n-collab-target').value);
+    if(!validateInput(input_target, config.settings.pMin, config.settings.pMax, 'n-collab-target')) return;
+    const target = input_target / 100;
+
+    const s = parseInt(document.getElementById('s-collab-target').value);
+    if(!validateInput(s, config.settings.sMin, config.pools.collab.maxCharacters - 1, 's-collab-target')) return;
+
+    const target_s = parseInt(document.getElementById('target-s-collab-target').value);
+    if(!validateInput(target_s, config.settings.targetsMin, config.pools.collab.maxCharacters - s, 'target-s-collab-target')) return;
+
+    const [n, p] = calculateSummonNum(target, target_s, config.pools.collab.maxCharacters, s, config.pools.collab.probability);
+
+    printSummonNumResult(n, p, target, 'collab');
+}
+
+function calculateDoubleUpSummonNum() {
+    const input_target = parseFloat(document.getElementById('n-doubleup-target').value);
+    if(!validateInput(input_target, config.settings.pMin, config.settings.pMax, 'n-doubleup-target')) return;
+    const target = input_target / 100;
+
+    const s = parseInt(document.getElementById('s-doubleup-target').value);
+    if(!validateInput(s, config.settings.sMin, config.pools.doubleup.maxCharacters - 1, 's-doubleup-target')) return;
+
+    const target_s = parseInt(document.getElementById('target-s-doubleup-target').value);
+    if(!validateInput(target_s, config.settings.targetsMin, config.pools.doubleup.maxCharacters - s, 'target-s-doubleup-target')) return;
+
+    const [n, p] = calculateSummonNum(target, target_s, config.pools.doubleup.maxCharacters, s, config.pools.doubleup.probability);
+
+    printSummonNumResult(n, p, target, 'doubleup');
+}
+
+function calculateSingleUpSummonNum() {
+    const input_target = parseFloat(document.getElementById('n-singleup-target').value);
+    if(!validateInput(input_target, config.settings.pMin, config.settings.pMax, 'n-singleup-target')) return;
+    const target = input_target / 100;
+
+    const [n, p] = calculateSummonNum(target, 1, config.pools.singleup.maxCharacters, 0, config.pools.singleup.probability);
+
+    printSummonNumResult(n, p, target, 'singleup');
+}
+
+function calculateNormalSummonNum() {
+    const input_target = parseFloat(document.getElementById('n-normal-target').value);
+    if(!validateInput(input_target, config.settings.pMin, config.settings.pMax, 'n-normal-target')) return;
+    const target = input_target / 100;
+
+    const [n, p] = calculateSummonNum(target, 1, config.pools.normal.maxCharacters, 0, config.pools.normal.probability);
+
+    printSummonNumResult(n, p, target, 'normal');
+}
+
+function calculateCustomSummonNum() {
+    const cacheCorrect10Summon = bCorrect10Summon;
+    bCorrect10Summon = false;
+
+    let prob = parseFloat(document.getElementById('p-custom').value);
+    if(!validateInput(prob, config.settings.pMin, config.settings.pMax, 'p-custom')) return;
+    const p = prob / 100;
+
+    const m = parseInt(document.getElementById('m-custom').value);
+    if(!validateInput(m, config.settings.mMin, config.settings.mMax, 'm-custom')) return;
+
+    const input_target = parseFloat(document.getElementById('n-custom-target').value);
+    if(!validateInput(input_target, config.settings.pMin, config.settings.pMax, 'n-custom-target')) return;
+    const target = input_target / 100;
+
+    const s = m > 1 ? parseInt(document.getElementById('s-custom-target').value) : 0;
+    if(!validateInput(s, config.settings.sMin, m - 1, 's-custom-target')) return;
+
+    const target_s = m > 1 ? parseInt(document.getElementById('target-s-custom-target').value) : 1;
+    if(!validateInput(target_s, config.settings.targetsMin, m - s, 'target-s-custom-target')) return;
+
+    const [n, result_p] = calculateSummonNum(target, target_s, m, s, p);
+
+    printSummonNumResult(n, result_p, target, 'custom');
+
+    bCorrect10Summon = cacheCorrect10Summon;
+}
+
+function printSummonNumResult(n, p, target, pool) {
+    let output = '';
+    if(bCorrect10Summon)
+        output += t("After performing {0} 10-summon(s), the probability of success is {1}.", {0: n / 9, 1: printPercentage(p)});
+    else
+        output += t("After performing {0} summon(s), the probability of success is {1}.", {0: n, 1: printPercentage(p)});
+    if(p < target)
+        output += t("<br>(Exceeds calculator limits)");
+    document.getElementById(`output-${pool}-target`).innerHTML = `<p>${output}</p>`;
 }
 
 // CDF
