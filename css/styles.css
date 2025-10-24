@@ -116,7 +116,7 @@ input {
 }
 .character-description {
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     color: #6c757d;
     font-style: italic;
@@ -135,7 +135,7 @@ input {
     }
 
     .character-description {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 .calc-group {
@@ -162,7 +162,7 @@ input {
 }
 .error-text {
     color:#dc3545;
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 5px;
     display: none;
 }
@@ -268,10 +268,10 @@ input {
     color: #fff;
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 14px;
     white-space: normal;
     width: max-content;
-    max-width: 400px;
+    max-width: 500px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s, visibility 0.2s;
