@@ -369,8 +369,7 @@ function SetupCorrectSummonCountCheckbox(pool) {
             <label class="checkbox-label">
                 <input type="checkbox" id="${pool}-correct-10-summon">
                 <span data-translate="Correct 10-summon">Correct 10-summon</span>
-                <span class="tooltip-icon info-circle" data-tooltip="correct-10-summon-tooltip" data-tooltip-text="A 10-summon is actually 9 summons plus 1 purple gift. Correct the summon count for accurate results.">?
-                </span>
+                <sup class="tooltip-icon" data-tooltip="correct-10-summon-tooltip" data-tooltip-text="A 10-summon is actually 9 summons plus 1 purple gift. Correct the summon count for accurate results.">?</sup>
             </label>
         `;
     }
