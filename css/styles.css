@@ -278,6 +278,14 @@ input {
     pointer-events: none;
     z-index: 1000;
 }
+.tooltip-icon:hover::after {
+    opacity: 0.8;
+    visibility: visible;
+}
+sup.tooltip-icon {
+    position: relative;
+    left: -0.25em;
+}
 @media (max-width: 600px) {
     .tooltip-icon::after {
         position: fixed;
@@ -286,12 +294,16 @@ input {
         max-width: 85%;
         text-align: center;
     }
-}
-.tooltip-icon:hover::after {
-    opacity: 0.8;
-    visibility: visible;
-}
-sup.tooltip-icon {
-    position: relative;
-    left: -0.25em;
+    sup.tooltip-con {
+        /*Invisible padding for larger hover area*/
+        padding: 12px;
+        margin: -12px;
+    }
+    sup.tooltip-icon::before {
+        position: absolute;
+        top: -12px;
+        left: -12px;
+        right: -12px;
+        bottom: -12px;
+    }
 }
