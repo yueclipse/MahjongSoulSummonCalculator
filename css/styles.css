@@ -294,7 +294,7 @@ sup.tooltip-icon {
         max-width: 85%;
         text-align: center;
     }
-    sup.tooltip-con {
+    sup.tooltip-icon {
         /*Invisible padding for larger hover area*/
         padding: 12px;
         margin: -12px;
