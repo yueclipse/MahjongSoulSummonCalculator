@@ -299,11 +299,4 @@ sup.tooltip-icon {
         padding: 12px;
         margin: -12px;
     }
-    sup.tooltip-icon::before {
-        position: absolute;
-        top: -12px;
-        left: -12px;
-        right: -12px;
-        bottom: -12px;
-    }
 }
